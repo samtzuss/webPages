@@ -1,19 +1,14 @@
 .DS_Store
 
-checksum
-
 *.dockerfile
 
-dists/
+dist/
 
 node_modules/
 
 package-lock.json
 
-packaged.yaml
-
-*.resolved.yaml
-
-checksum
-
 !**/.gitignore
+
+.yarn/
+.yarnrc.yml

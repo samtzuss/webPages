@@ -79,7 +79,7 @@ module.exports = (env, argv) => ({
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
-      maxSize: 0,
+      maxSize: 60000,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,

@@ -27,5 +27,6 @@
   "dependencies": {
     "vue": "^3.2.35",
     "vue-router": "^4.0.15"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
