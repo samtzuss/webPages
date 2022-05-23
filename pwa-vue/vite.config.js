@@ -10,7 +10,7 @@ export default defineConfig({
       base: "/pwa-vue/",
       srcDir: "src",
       filename: "sw.ts",
-      includeAssets: ["favicon.png"],
+      includeAssets: ["/favicon.png"],
       strategies: "injectManifest",
       manifest: {
         name: "Test Project",
