@@ -7,7 +7,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       mode: "development",
-      base: "/",
+      base: "/pwa-vue/",
       srcDir: "src",
       filename: "sw.ts",
       includeAssets: ["/favicon.png"],
@@ -16,7 +16,7 @@ export default defineConfig({
         name: "Test Project",
         short_name: "Test",
         theme_color: "#ffffff",
-        start_url: "/",
+        start_url: "/pwa-vue/",
         display: "standalone",
         background_color: "#ffffff",
         icons: [
