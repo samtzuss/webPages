@@ -14,7 +14,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       mode: "development",
-      // base: "/webPages/pwa-vue/",
+      base: "/webPages/pwa-vue/",
       srcDir: "src",
       filename: "sw.ts",
       includeAssets: ["favicon.png"],

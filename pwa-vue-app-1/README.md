@@ -22,5 +22,6 @@ https://rubenr.dev/en/pwa-vite/
 yarn create vite pwa-vue --template vue
 cd pwa-vue
 yarn add workbox-window
-yarn
+yarn (install)
 yarn dev
+yarn build
