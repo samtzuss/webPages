@@ -24,4 +24,6 @@ cd pwa-vue
 yarn add workbox-window
 yarn (install)
 yarn dev
-yarn build
+yarn build #-> /webPages/docs
+
+https://samtzuss.github.io/webPages/pwa-vue

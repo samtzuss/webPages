@@ -7,6 +7,7 @@ import { VitePWA } from "vite-plugin-pwa"
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/webPages/pwa-vue/',
+  publicDir: '/webPages/pwa-vue/',
   build: {
     outDir: '../docs/pwa-vue'
   },
