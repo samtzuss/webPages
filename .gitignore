@@ -12,6 +12,7 @@ dist/
 dist-ssr
 *.local
 .yarn/
+tmp/
 
 # Editor directories and files
 .vscode/*
@@ -24,6 +25,4 @@ dist-ssr
 *.sln
 *.sw?
 *.dockerfile
-package-lock.json
-yarn.lock
 !**/.gitignore
