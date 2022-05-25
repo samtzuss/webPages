@@ -10,20 +10,3 @@ npm init
 npm i -D @babel/core @babel/preset-env babel-loader clean-webpack-plugin copy-webpack-plugin css-loader html-webpack-plugin vue-loader vue-style-loader vue-template-compiler webpack webpack-cli webpack-dev-server
 npm i vue vue-router
 npm install
-
-[install yarn latest]
-https://polinwei.com/npm-vs-yarn/
-npm i -g yarn@latest
-yarn set version berry
-yarn set version latest (v3.21)
-
-Development of a Progressive Web App with Vue 3
-https://rubenr.dev/en/pwa-vite/
-yarn create vite pwa-vue --template vue
-cd pwa-vue
-yarn add workbox-window
-yarn (install)
-yarn dev
-yarn build #-> /webPages/docs
-
-https://samtzuss.github.io/webPages/pwa-vue
