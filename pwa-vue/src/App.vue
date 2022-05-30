@@ -4,7 +4,7 @@
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, onMounted } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import ReloadPWA from "./components/ReloadPWA.vue";
 export default defineComponent({
@@ -13,5 +13,25 @@ export default defineComponent({
     HelloWorld,
     ReloadPWA,
   },
+  setup() {
+    const states = reactive({
+      deferredPrompt: null,
+    });
+    onMounted(() => {
+      window.addEventListener("beforeinstallprompt", e => {
+        e.preventDefault();
+        states.deferredPrompt = e;
+      });
+      window.addEventListener("appinstalled", () => {
+        states.deferredPrompt = null;
+      });
+      document.querySelector("#app").addEventListener("click", () => {
+        if (states.deferredPrompt) {
+          states.deferredPrompt.prompt();
+          states.deferredPrompt = null;
+        }
+      });
+    });
+  }
 });
 </script>

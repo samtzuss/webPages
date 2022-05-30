@@ -20,7 +20,12 @@ cd pwa-vue
 yarn add workbox-window
 yarn (install)
 yarn dev
+(/apps/webPages/pwa-vue)
 yarn build #-> /webPages/docs
 ```
+
+## 原始碼
+參考網址 https://github.com/rubenRP/vite-pwa-boilerplate
+
 ## 測試網址
 參考網址 https://samtzuss.github.io/webPages/pwa-vue
