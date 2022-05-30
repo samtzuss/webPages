@@ -1,7 +1,7 @@
 <template>
   <ReloadPWA />
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite v2.0" />
+  <HelloWorld msg="Hello Vue 3 + Vite v2.1" />
 </template>
 <script lang="ts">
 import { defineComponent, reactive, onMounted } from "vue";
