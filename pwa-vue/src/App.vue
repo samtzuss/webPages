@@ -21,6 +21,9 @@ export default defineComponent({
       window.addEventListener("beforeinstallprompt", e => {
         e.preventDefault();
         states.deferredPrompt = e;
+        showInstallPromotion();
+        // Optionally, send analytics event that PWA install promo was shown.
+        console.log(`'beforeinstallprompt' event was fired.`);
       });
       window.addEventListener("appinstalled", () => {
         states.deferredPrompt = null;
