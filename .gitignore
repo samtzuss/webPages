@@ -12,6 +12,8 @@ dist/
 dist-ssr
 *.local
 .yarn/
+.cache
+.temp
 tmp/
 
 # Editor directories and files

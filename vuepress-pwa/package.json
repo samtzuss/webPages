@@ -1,0 +1,23 @@
+{
+  "name": "vuepress-pwa",
+  "packageManager": "yarn@3.2.1",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-beta.33",
+    "@vuepress/plugin-pwa": "^2.0.0-beta.46",
+    "@vuepress/plugin-register-components": "^2.0.0-beta.46",
+    "vuepress-webpack": "^2.0.0-beta.32"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^0.2.6",
+    "@vuepress/theme-default": "^2.0.0-beta.46",
+    "axios": "^0.25.0",
+    "element-plus": "^1.3.0-beta.9",
+    "pinia": "^2.0.14",
+    "vue": "^3.2.36",
+    "vuepress": "^2.0.0-beta.46"
+  }
+}
