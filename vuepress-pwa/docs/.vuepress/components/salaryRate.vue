@@ -18,9 +18,8 @@
   </table>
 </template>
 <script>
-/*
 import { mapActions, mapState } from 'pinia'
-import { useMainStore } from '../store'
+import { stores } from '../store'
 
 export default {
   filters: {
@@ -61,7 +60,7 @@ export default {
     // console.log('textVar:', this.textVar)
   },
   computed: {
-    ...mapState(useMainStore, ['textVar']),
+    ...mapState(stores, ['textVar']),
     filteredHeroes: function () {
       const sortKey = this.sortKey
       const filterKey = this.filterKey && this.filterKey.toLowerCase()
@@ -91,8 +90,6 @@ export default {
     }
   }
 }
-
-*/
 </script>
 <style scoped>
 table {

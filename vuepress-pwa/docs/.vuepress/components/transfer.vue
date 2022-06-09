@@ -54,16 +54,11 @@
 </template>
 <script>
 import { stores } from "../store/index.js"
-import { storeToRefs } from 'pinia'
 import { defineComponent } from 'vue'
 
-export default defineComponent ({
+export default defineComponent({
   setup() {
-    console.log('transfer ....')
-    const store = storeToRefs(stores());
-    console.log('store:')
-    console.log(store)
-    // const store = stores()
+    const store = stores()
     return {
       store
     }

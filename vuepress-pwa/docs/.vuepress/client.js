@@ -1,11 +1,12 @@
+// config.js中clientAppEnhanceFiles定義此檔名
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-// import store from './store/index.js'
+// import stores from './store/index.js'
 import { defineClientConfig } from '@vuepress/client'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElIcons from '@element-plus/icons-vue'
-console.log('------------------------------ 111111111111111111111111---------------')
 // axios
 // import { axios } from 'axios';
 // window.globalApi = Object.freeze({
@@ -17,9 +18,7 @@ const app = createApp({})
 
 export default defineClientConfig({
   setup(){
-    console.log('------------------------------ 222222222 ---------------')
     app.use(createPinia())
-    console.log('++++++++++++++after app.use ++++++++++++')
     // app.mixin({ store: store })
 
     app.use(ElementPlus)

@@ -57,7 +57,16 @@
   </table>
 </template>
 <script>
-export default {
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const store = stores()
+    return {
+      store
+    }
+  },
   data() {
     return {
       balance: 9836,
@@ -214,7 +223,7 @@ export default {
 
     }
   }
-}
+})
 </script>
 <style scoped>
 table {
