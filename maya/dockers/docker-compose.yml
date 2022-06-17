@@ -1,0 +1,236 @@
+# path prepared before docker-compose
+# /home/apps/dockers,mysql,projects,webs
+# dockers/nginx/default.conf
+# mysql/conf.d,db
+# projects/maya/maya1,maya2,maya3,maya4,maya5
+# webs/html
+
+version: '3.9'
+services:
+  adminer:
+    image: dehy/adminer # version: 4.8.1
+    container_name: adminer
+    restart: always
+    ports:
+      - 65101:80
+    environment:
+      - TZ=Asia/Taipei      
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.11
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+  db:
+    image: mariadb # version: 10.9.1-rc-jammy
+    container_name: db
+    restart: always
+    ports:
+      - 65102:3306
+    volumes:
+      - ${rootPath}/mysql/db:/var/lib/mysql
+      - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d
+    environment:
+      - MARIADB_ROOT_PASSWORD=0926721122
+      - MARIADB_USER=tzuss
+      - MARIADB_PASSWORD=0926721122
+      - TZ=Asia/Taipei
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.12
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'     
+  node:
+    image: docker.io/bitnami/node # version: 18.3.0
+    container_name: node
+    tty: true # Enables debugging capabilities when attached to this container.
+    # command: sh -c 'npm install && npm start'
+    # ports:
+    #   - 3000:3000
+    volumes:
+      - /home/apps:/app
+    environment:
+      - TZ=Asia/Taipei
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.13
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'           
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    tty: true
+    ports:
+      - 80:80
+      - 443:443
+      - 65107:65107
+    volumes:
+      - ${rootPath}/webs/html:/etc/nginx/html
+      - ${nginxConfig}/default.conf:/etc/nginx/conf.d/default.conf
+      # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer
+      # - ${rootPath}/nginx/rsa/api.fintechlife.net.csr:/etc/nginx/ssl/rsa/api.fintechlife.net.csr
+      # - ${rootPath}/nginx/ecc/fullchain.cer:/etc/nginx/ssl/ecc/fullchain.cer
+      # - ${rootPath}/nginx/ecc/api.fintechlife.net.csr:/etc/nginx/ssl/ecc/api.fintechlife.net.csr
+    environment:
+      - TZ=Asia/Taipei
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.15
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+
+  maya1:
+    image: wordpress
+    container_name: maya1
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 65111:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya1
+      - TZ=Asia/Taipei
+    volumes:
+      - ${maya}1:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.16
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+  maya2:
+    image: wordpress
+    container_name: maya2
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 65112:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=tzuss
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya2
+      - TZ=Asia/Taipei
+    volumes:
+      - ${maya}2:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.17
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+  maya3:
+    image: wordpress
+    container_name: maya3
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 65113:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=tzuss
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya3
+      - TZ=Asia/Taipei
+    volumes:
+      - ${maya}3:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.18
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+  maya4:
+    image: wordpress
+    container_name: maya4
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 65114:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=tzuss
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya4
+      - TZ=Asia/Taipei
+    volumes:
+      - ${maya}4:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.19
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+  maya5:
+    image: wordpress
+    container_name: maya5
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 65115:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=tzuss
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya5
+      - TZ=Asia/Taipei
+    volumes:
+      - ${maya}5:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.20
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+networks:
+  appsNet:
+    name: appsNet
+    ipam:
+      config:
+      - subnet: ${gateWay3}.0/24
+

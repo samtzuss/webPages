@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  db:
+    image: mariadb
+    restart: always
+    container_name: db
+    ports:
+      - 65102:3306
+    volumes:
+      - ${rootPath}/mysql/db:/var/lib/mysql
+      - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d
+    environment:
+      - MARIADB_ROOT_PASSWORD=0926721122
+      - MARIADB_USER=tzuss
+      - MARIADB_PASSWORD=0926721122
+      - TZ=Asia/Taipei
+    extra_hosts:
+      - 'hostFather:${hostFather}'
+      - 'gateWay:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.101
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
