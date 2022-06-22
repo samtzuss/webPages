@@ -1,0 +1,36 @@
+# file: socat-compose.yml
+
+# sudo docker run --network appsNet --rm -p 54321:54321 rynr/socat -v -v TCP-LISTEN:54321,crlf,reuseaddr,fork SYSTEM:"echo HTTP/1.0 200; echo Content-Type\: text/plain; echo; echo connect OK"
+# sudo docker run --network appsNet --rm -p 54321:54321 rynr/socat -v -v TCP-LISTEN:54321,crlf,reuseaddr,fork SYSTEM:"echo HTTP/1.0 200; echo Content-Type\: text/plain; echo; echo connect OK"
+
+# docker pull backplane/json-server
+# docker pull clue/json-server
+
+version: '3.9'
+services:
+  socat:
+    image: 'rynr/socat'
+    container_name: 'socat'
+    hostname: 'socat'
+    tty: true
+    restart: 'no'
+    command: tail -f /dev/null
+    ports:
+      - '54321:54321'
+    environment:
+      - 'TZ=Asia/Taipei'
+      - 'LANG=C.UTF-8'
+    networks:
+      appsNet:
+        ipv4_address: '${gateWay3}.22'
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+networks:
+  appsNet:
+    external:
+      name: 'appsNet'

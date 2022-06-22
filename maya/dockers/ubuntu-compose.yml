@@ -1,0 +1,40 @@
+# file: ubuntu-compose.yml
+# sudo docker run -d --name ubuntu --hostname uuu --ip 172.16.0.21 --network appsNet --rm --add-host hostFather:172.16.0.1 -e TZ=Asia/Taipei -e LANG=C.UTF-8 -p 30306:3306 ubuntu:22.04 /bin/bash -c "apt update -y && apt install curl socat -y && /usr/bin/tail -f /dev/null"
+# ref: https://docs.docker.com/engine/reference/commandline/run/
+
+version: '3.9'
+services:
+  ubuntu:
+    image: ubuntu:22.04
+    container_name: 'ubuntu'
+    hostname: 'uuu'
+    restart: always
+    ports:
+      - '65120:80'
+      - '65121:443'
+      - '65122:22'
+      - '65123:65123'
+    command: tail -f /dev/null
+    # command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     apt update -y && apt install curl socat -y
+    #     tail -f /dev/null
+    environment:
+      - 'TZ=Asia/Taipei'
+      - 'LANG=C.UTF-8'
+    networks:
+      appsNet:
+        ipv4_address: '${gateWay3}.21'
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+networks:
+  appsNet:
+    external:
+      name: appsNet

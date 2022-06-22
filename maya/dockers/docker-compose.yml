@@ -12,9 +12,9 @@ services:
     container_name: adminer
     restart: always
     ports:
-      - 65101:80
+      - '65101:80'
     environment:
-      - TZ=Asia/Taipei      
+      - 'TZ=Asia/Taipei'
     networks:
       appsNet:
         ipv4_address: ${gateWay3}.11
@@ -46,7 +46,7 @@ services:
       driver: 'local'
       options:
         max-size: '10k'
-        max-file: '2'     
+        max-file: '2'
   node:
     image: docker.io/bitnami/node # version: 18.3.0
     container_name: node
@@ -67,7 +67,7 @@ services:
       driver: 'local'
       options:
         max-size: '10k'
-        max-file: '2'           
+        max-file: '2'
   nginx:
     image: nginx
     container_name: nginx
@@ -233,4 +233,3 @@ networks:
     ipam:
       config:
       - subnet: ${gateWay3}.0/24
-
