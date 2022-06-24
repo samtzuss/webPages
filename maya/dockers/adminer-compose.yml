@@ -21,4 +21,4 @@ networks:
     name: appsNet
     ipam:
       config:
-      - subnet: 172.16.0.0/24
+      - subnet: ${gateWay3}.0/24

@@ -10,6 +10,7 @@ services:
   adminer:
     image: dehy/adminer # version: 4.8.1
     container_name: adminer
+    hostname: adminer
     restart: always
     ports:
       - '65101:80'
@@ -26,6 +27,7 @@ services:
   db:
     image: mariadb # version: 10.9.1-rc-jammy
     container_name: db
+    hostname: db
     restart: always
     ports:
       - 65102:3306
@@ -50,6 +52,7 @@ services:
   node:
     image: docker.io/bitnami/node # version: 18.3.0
     container_name: node
+    hostname: node
     tty: true # Enables debugging capabilities when attached to this container.
     # command: sh -c 'npm install && npm start'
     # ports:
@@ -71,6 +74,7 @@ services:
   nginx:
     image: nginx
     container_name: nginx
+    hostname: nginx
     restart: always
     tty: true
     ports:
@@ -79,7 +83,9 @@ services:
       - 65107:65107
     volumes:
       - ${rootPath}/webs/html:/etc/nginx/html
-      - ${nginxConfig}/default.conf:/etc/nginx/conf.d/default.conf
+      - ${nginxConfig}/nginx.conf:/etc/nginx/nginx.conf
+      - ${nginxConfig}/conf.d:/etc/nginx/conf.d
+      - /tmp/nginx-log:/var/log/nginx
       # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer
       # - ${rootPath}/nginx/rsa/api.fintechlife.net.csr:/etc/nginx/ssl/rsa/api.fintechlife.net.csr
       # - ${rootPath}/nginx/ecc/fullchain.cer:/etc/nginx/ssl/ecc/fullchain.cer
@@ -100,6 +106,7 @@ services:
   maya1:
     image: wordpress
     container_name: maya1
+    hostname: maya1
     restart: always
     depends_on:
       - db
@@ -126,6 +133,7 @@ services:
   maya2:
     image: wordpress
     container_name: maya2
+    hostname: maya2
     restart: always
     depends_on:
       - db
@@ -152,6 +160,7 @@ services:
   maya3:
     image: wordpress
     container_name: maya3
+    hostname: maya3
     restart: always
     depends_on:
       - db
@@ -178,6 +187,7 @@ services:
   maya4:
     image: wordpress
     container_name: maya4
+    hostname: maya4
     restart: always
     depends_on:
       - db
@@ -204,6 +214,7 @@ services:
   maya5:
     image: wordpress
     container_name: maya5
+    hostname: maya5
     restart: always
     depends_on:
       - db
