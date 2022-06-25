@@ -3,9 +3,11 @@ server {
   # listen 443 ssl;
   # listen [::]:443 ssl;
   listen 80;
-  server_name maya5.openfthub.com;
+  server_name fresh.openfthub.com;
   index index.html index.htm;
-  location / {
+  location /maya5/ {
+    include conf.d/set-header.proxy;
+    proxy_set_header Host $server_name:65115;
     proxy_pass http://maya5:80;
   }
 }
