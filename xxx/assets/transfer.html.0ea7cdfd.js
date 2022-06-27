@@ -1,0 +1,1 @@
+const t={key:"v-55df34f8",path:"/transaction/transfer.html",title:"\u8F49\u5E33\u9801\u9762",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{},filePathRelative:"transaction/transfer.md"};export{t as data};

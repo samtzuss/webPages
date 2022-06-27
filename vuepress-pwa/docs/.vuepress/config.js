@@ -17,7 +17,7 @@ module.exports = {
     ['meta', { 'http-quiv': 'expires', cotent: '0'}]
   ],
   serviceWorker: true, // 是否開啟 PWA
-  base: '/webPages/vuepress-pwa/', // 部署到github相關的配置
+  base: '/webPages/tg-pwa/', // 部署到github相關的配置
   markdown: {
     lineNumbers: true // 代碼塊是否顯示行號
   },
@@ -67,12 +67,13 @@ module.exports = {
     //   },
     // ]
   ],
+  dest: '../docs/tg-pwa', // 原root在 project root
   bundler: viteBundler({
     viteOptions:{
       // base: '/webPages/vuepress-pwa/',
       // publicDir: '/webPages/vuepress-pwa/',
       // build: {
-      //   outDir: '../docs/pwa-vue'
+      //   outDir: '../docs/test'
       // },
       // 防止 [WARNING] "@charset" must be the first rule in the file
       css:{
