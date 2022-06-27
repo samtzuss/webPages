@@ -1,1 +1,0 @@
-const t={key:"v-1f070044",path:"/control/logout.html",title:"\u767B\u51FA\u756B\u9762",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{},filePathRelative:"control/logout.md"};export{t as data};

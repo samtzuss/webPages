@@ -1,1 +1,0 @@
-const e={key:"v-fb8d6946",path:"/query/history_record.html",title:"\u6B77\u53F2\u4EA4\u6613",lang:"en-US",frontmatter:{home:!1,title:"\u6B77\u53F2\u4EA4\u6613"},excerpt:"",headers:[],git:{},filePathRelative:"query/history_record.md"};export{e as data};

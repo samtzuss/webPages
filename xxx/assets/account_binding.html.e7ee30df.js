@@ -1,1 +1,0 @@
-const t={key:"v-692cb81e",path:"/setting/account_binding.html",title:"\u7D81\u5B9A\u5E33\u865F",lang:"en-US",frontmatter:{home:!1,title:"\u7D81\u5B9A\u5E33\u865F"},excerpt:"",headers:[],git:{},filePathRelative:"setting/account_binding.md"};export{t as data};

@@ -44,6 +44,14 @@ module.exports = {
       //   { text: '登出', link: '/control/logout.html' }
       // ]}
     ],
+    locales: {
+      '/': {
+        selectLanguageName: 'English',
+      },
+      '/tw/': {
+        selectLanguageName: '繁體中文',
+      },
+    },
     // 在此全局加載模組
     clientAppEnhanceFiles: path.resolve(__dirname, './client.js'),
     darkMode: false,
@@ -70,11 +78,6 @@ module.exports = {
   dest: '../docs/tg-pwa', // 原root在 project root
   bundler: viteBundler({
     viteOptions:{
-      // base: '/webPages/vuepress-pwa/',
-      // publicDir: '/webPages/vuepress-pwa/',
-      // build: {
-      //   outDir: '../docs/test'
-      // },
       // 防止 [WARNING] "@charset" must be the first rule in the file
       css:{
         preprocessorOptions:{
@@ -105,6 +108,20 @@ module.exports = {
         }
       }
     },
+    locales: {
+      // The key is the path for the locale to be nested under.
+      // As a special case, the default locale can use '/' as its path.
+      '/': {
+        lang: 'en-US',
+        title: 'English',
+        description: 'English version',
+      },
+      '/tw/': {
+        lang: 'zh-TW',
+        title: '繁中',
+        description: '繁體中文版',
+      },
+    }
   }),
 
   chainWebpack(config) {
