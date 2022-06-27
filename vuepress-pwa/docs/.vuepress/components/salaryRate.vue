@@ -18,7 +18,8 @@
   </table>
 </template>
 <script>
-import { mapActions, mapState } from 'pinia'
+// import { mapActions, mapState } from 'pinia'
+import { mapState } from 'pinia'
 import { stores } from '../store'
 
 export default {

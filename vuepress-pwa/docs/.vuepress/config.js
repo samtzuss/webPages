@@ -53,10 +53,10 @@ module.exports = {
   // default vite
   // bundler: '@vuepress/bundler-webpack',
   plugins: [
-    pwaPlugin({
-      skipWaiting: true,
-      serviceWorkerFilename: 'service-worker.js'
-    }),
+    // pwaPlugin({
+    //   skipWaiting: true,
+    //   serviceWorkerFilename: 'service-worker.js'
+    // }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')
     }),
@@ -68,10 +68,38 @@ module.exports = {
     // ]
   ],
   bundler: viteBundler({
-    viteOptions: {},
-    vuePluginOptions: {
-      template: {
-        compilerOptions: {
+    viteOptions:{
+      // base: '/webPages/vuepress-pwa/',
+      // publicDir: '/webPages/vuepress-pwa/',
+      // build: {
+      //   outDir: '../docs/pwa-vue'
+      // },
+      // 防止 [WARNING] "@charset" must be the first rule in the file
+      css:{
+        preprocessorOptions:{
+          scss:{
+            charset: false
+          }
+        },
+        postcss:{
+          plugins:[
+            {
+              postcssPlugin: 'internal:charset-removal',
+              AtRule:{
+                charset:(atRule) => {
+                  if (atRule.name === 'charset') {
+                    atRule.remove();
+                  }
+                }
+              }
+            }
+          ],
+        },
+      }
+    },
+    vuePluginOptions:{
+      template:{
+        compilerOptions:{
           whitespace: 'condense'
         }
       }

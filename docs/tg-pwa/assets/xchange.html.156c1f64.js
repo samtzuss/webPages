@@ -1,0 +1,1 @@
+const e={key:"v-03e7a451",path:"/query/xchange.html",title:"\u532F\u7387",lang:"en-US",frontmatter:{home:!1,title:"\u532F\u7387"},excerpt:"",headers:[],git:{},filePathRelative:"query/xchange.md"};export{e as data};

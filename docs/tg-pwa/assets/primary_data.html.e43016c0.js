@@ -1,0 +1,1 @@
+const t={key:"v-9f1182cc",path:"/setting/primary_data.html",title:"\u57FA\u672C\u8CC7\u6599",lang:"en-US",frontmatter:{home:!1,title:"\u57FA\u672C\u8CC7\u6599"},excerpt:"",headers:[],git:{},filePathRelative:"setting/primary_data.md"};export{t as data};

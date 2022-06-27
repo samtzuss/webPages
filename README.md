@@ -20,3 +20,6 @@ npm run serve
 
 https://www.footmark.com.tw/news/programming-language/vuejs/vue-cli3-seting/
 vue ui --host localhost
+
+[github page]
+root: repo/docs
