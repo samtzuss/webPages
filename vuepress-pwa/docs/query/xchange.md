@@ -1,6 +1,5 @@
 ---
-home: false
-title: 匯率
+title: exchange rate
 ---
-# 查詢匯率
+# Query exchange rate
 <xchange />

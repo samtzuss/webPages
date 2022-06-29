@@ -1,0 +1,1 @@
+const t={key:"v-fe8b0840",path:"/tw/query/account_binding.html",title:"\u7D04\u5B9A\u5E33\u865F",lang:"zh-TW",frontmatter:{home:!1,title:"\u7D04\u5B9A\u5E33\u865F"},excerpt:"",headers:[],git:{},filePathRelative:"tw/query/account_binding.md"};export{t as data};

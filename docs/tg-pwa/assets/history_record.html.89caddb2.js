@@ -1,0 +1,1 @@
+const t={key:"v-fb8d6946",path:"/query/history_record.html",title:"History transaction record",lang:"en-US",frontmatter:{title:"History transaction record"},excerpt:"",headers:[],git:{},filePathRelative:"query/history_record.md"};export{t as data};

@@ -1,6 +1,5 @@
 ---
-home: false
-title: 薪轉比率
+title: Salary Rate
 ---
-# 查詢薪轉比率
+# Query salary rate
 <salaryRate />

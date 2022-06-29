@@ -1,6 +1,5 @@
 ---
-home: false
-title: 基本資料
+title: set basic data
 ---
-# 設定基本資料
+# Set basic data
 <primaryData />

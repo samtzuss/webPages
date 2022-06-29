@@ -1,0 +1,1 @@
+const t={key:"v-ebc8f4c8",path:"/setting/salary_rate.html",title:"set salary rate",lang:"en-US",frontmatter:{title:"set salary rate"},excerpt:"",headers:[],git:{},filePathRelative:"setting/salary_rate.md"};export{t as data};

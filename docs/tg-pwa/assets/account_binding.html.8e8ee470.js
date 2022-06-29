@@ -1,0 +1,1 @@
+const t={key:"v-692cb81e",path:"/setting/account_binding.html",title:"set account binding",lang:"en-US",frontmatter:{title:"set account binding"},excerpt:"",headers:[],git:{},filePathRelative:"setting/account_binding.md"};export{t as data};

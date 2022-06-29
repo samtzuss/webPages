@@ -1,0 +1,1 @@
+const t={key:"v-1299ea98",path:"/tw/setting/account_binding.html",title:"\u7D81\u5B9A\u5E33\u865F",lang:"zh-TW",frontmatter:{home:!1,title:"\u7D81\u5B9A\u5E33\u865F"},excerpt:"",headers:[],git:{},filePathRelative:"tw/setting/account_binding.md"};export{t as data};

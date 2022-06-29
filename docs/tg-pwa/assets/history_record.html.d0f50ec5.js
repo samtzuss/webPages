@@ -1,0 +1,1 @@
+const t={key:"v-7f4889ba",path:"/tw/query/history_record.html",title:"\u6B77\u53F2\u4EA4\u6613",lang:"zh-TW",frontmatter:{home:!1,title:"\u6B77\u53F2\u4EA4\u6613"},excerpt:"",headers:[],git:{},filePathRelative:"tw/query/history_record.md"};export{t as data};

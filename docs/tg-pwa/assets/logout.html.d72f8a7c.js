@@ -1,0 +1,1 @@
+const t={key:"v-f6db86ec",path:"/tw/control/logout.html",title:"\u767B\u51FA\u756B\u9762",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{},filePathRelative:"tw/control/logout.md"};export{t as data};

@@ -1,6 +1,5 @@
 ---
-home: false
-title: 約定帳號
+title: Binding account
 ---
-# 查詢約定帳號
+# Query Binding account
 <accountBinding />

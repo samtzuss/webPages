@@ -1,6 +1,5 @@
 ---
-home: false
-title: 歷史交易
+title: History transaction record
 ---
-# 查詢歷史交易
+# Query history transaction record
 <historyRecord />

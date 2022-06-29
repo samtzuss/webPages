@@ -1,0 +1,1 @@
+const t={key:"v-22cca340",path:"/tw/setting/primary_data.html",title:"\u57FA\u672C\u8CC7\u6599",lang:"zh-TW",frontmatter:{home:!1,title:"\u57FA\u672C\u8CC7\u6599"},excerpt:"",headers:[],git:{},filePathRelative:"tw/setting/primary_data.md"};export{t as data};

@@ -1,0 +1,1 @@
+const a={key:"v-f1cb3738",path:"/query/salary_rate.html",title:"Salary Rate",lang:"en-US",frontmatter:{title:"Salary Rate"},excerpt:"",headers:[],git:{},filePathRelative:"query/salary_rate.md"};export{a as data};

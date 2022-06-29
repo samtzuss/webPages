@@ -1,6 +1,5 @@
 ---
-home: false
-title: 綁定帳號
+title: set account binding
 ---
-# 綁定帳號
+# Set account binding
 <accountBindingSet />

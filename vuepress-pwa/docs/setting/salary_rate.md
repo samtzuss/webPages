@@ -1,6 +1,5 @@
 ---
-home: false
-title: 薪轉比率
+title: set salary rate
 ---
-# 設定薪轉比率
+# Set salary rate
 <salaryRateSet />

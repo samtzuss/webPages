@@ -18,7 +18,30 @@
   </table>
 </template>
 <script>
-export default {
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+export default defineComponent({
+  setup() {
+    const store = stores()
+    const { t, locale } = useI18n();
+    return {
+      t, locale,
+      store
+    }
+  },
+  mounted() {
+    this.$i18n.locale = this.$lang;
+    this.list_data =
+      [
+        { Name: this.$t('name_timmy'), Bank: this.$t('bank_first'), Account: '12345678****9874', Active:'2021-11-25' },
+        { Name: this.$t('name_may'), Bank: this.$t('bank_vietnam'), Account: '54126528****3178', Active:'2021-10-06' },
+        { Name: this.$t('name_tim'), Bank: this.$t('bank_ho'), Account: '85274196****9514', Active:'2021-11-25' },
+        { Name: this.$t('name_sam'), Bank: this.$t('bank_esun'), Account: '96395714****7561', Active:'2022-01-07' },
+        { Name: this.$t('name_maya'), Bank: this.$t('bank_mekong'), Account: '35741597****5317', Active:'2021-06-30' }
+      ]
+  },
   filters: {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
@@ -28,11 +51,11 @@ export default {
     heroes: {
       type: Array,
       default: () => [
-        { Name: 'Chuck Norris', Bank: '第一銀行', Account: '12345678****9874', Active:'2021-11-25' },
-        { Name: '梅平強', Bank: '越南銀行', Account: '54126528****3178', Active:'2021-10-06' },
-        { Name: '邱宏德', Bank: '胡志明銀行', Account: '85274196****9514', Active:'2021-11-25' },
-        { Name: 'Sam', Bank: '玉山銀行', Account: '96395714****7561', Active:'2022-01-07' },
-        { Name: 'Maya', Bank: '湄公河銀行', Account: '35741597****5317', Active:'2021-06-30' }
+        { Name: 'name_timmy', Bank: '第一銀行', Account: '12345678****9874', Active:'2021-11-25' },
+        { Name: 'name_may', Bank: '越南銀行', Account: '54126528****3178', Active:'2021-10-06' },
+        { Name: 'name_tim', Bank: '胡志明銀行', Account: '85274196****9514', Active:'2021-11-25' },
+        { Name: 'name_sam', Bank: '玉山銀行', Account: '96395714****7561', Active:'2022-01-07' },
+        { Name: 'name_maya', Bank: '湄公河銀行', Account: '35741597****5317', Active:'2021-06-30' }
       ]
     },
     columns: {
@@ -51,7 +74,8 @@ export default {
     })
     return {
       sortKey: '',
-      sortOrders: sortOrders
+      sortOrders: sortOrders,
+      list_data: []
     }
   },
   computed: {
@@ -59,7 +83,8 @@ export default {
       const sortKey = this.sortKey
       const filterKey = this.filterKey && this.filterKey.toLowerCase()
       const order = this.sortOrders[sortKey] || 1
-      let heroes = this.heroes
+      // let heroes = this.heroes
+      let heroes = this.list_data
       if (filterKey) {
         heroes = heroes.filter(function (row) {
           return Object.keys(row).some(function (key) {
@@ -83,7 +108,7 @@ export default {
       this.sortOrders[key] = this.sortOrders[key] * -1
     }
   }
-}
+})
 </script>
 <style scoped>
 table {

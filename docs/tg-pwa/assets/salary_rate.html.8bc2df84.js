@@ -1,0 +1,1 @@
+const t={key:"v-4d157a5e",path:"/tw/query/salary_rate.html",title:"\u85AA\u8F49\u6BD4\u7387",lang:"zh-TW",frontmatter:{home:!1,title:"\u85AA\u8F49\u6BD4\u7387"},excerpt:"",headers:[],git:{},filePathRelative:"tw/query/salary_rate.md"};export{t as data};

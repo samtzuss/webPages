@@ -1,65 +1,66 @@
 <template>
-  <div>
   <table style="display:inline-block;">
     <tbody>
       <tr>
         <td>
-          可轉餘額: <span style="font-weight:bold;color:blue;font-size:200%;">{{ balance }}</span>
+          {{ $t('available_amt') }}: <span style="font-weight:bold;color:blue;font-size:200%;">{{ balance }}</span>
         </td>
       </tr>
       <tr>
         <td>
-          梅平強: 12345678****9874<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_may" />
+          {{ $t('name_may') }}: 12345678****9874<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_may" />
         </td>
       </tr>
       <tr>
         <td>
-          張天瑞: 54126528****3178<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_timmy" />
+          {{ $t('name_timmy') }}: 54126528****3178<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_timmy" />
         </td>
       </tr>
       <tr>
         <td>
-          邱宏德: 85274196****9514<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_tim" />
+          {{ $t('name_tim') }}: 85274196****9514<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_tim" />
         </td>
       </tr>
       <tr>
         <td>
-          Sam: 96395714****7561<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_sam" />
+          {{ $t('name_sam') }}: 96395714****7561<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_sam" />
         </td>
       </tr>
       <tr>
         <td>
-          Fu Pi: 96395714****7561<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_fu" />
+          {{ $t('name_fu') }}: 96395714****7561<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_fu" />
         </td>
       </tr>
       <tr>
         <td>
-          Maya Chu: 35741597****5317<br /><br />
-          <input type="text" placeholder="請輸入金額" v-model="tx_maya" />
+          {{ $t('name_maya') }}: 35741597****5317<br /><br />
+          <input type="text" :placeholder="$t('enter_amount')" v-model="tx_maya" />
         </td>
       </tr>
       <tr>
         <td>
-          <input type="button" value="確定轉帳"  @click="txGo" />
+          <input type="button" :value="$t('Confirm_tx')"  @click="txGo" />
         </td>
       </tr>
     </tbody>
   </table>
-  </div>
 </template>
 <script>
 import { stores } from "../store/index.js"
 import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   setup() {
     const store = stores()
+    const { t, locale } = useI18n();
     return {
+      t, locale,
       store
     }
   },
@@ -83,6 +84,9 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.$i18n.locale = this.$lang;
+    // console.log(this.$lang)
+    // console.log(this.$t('name_sam'))
     // console.log('state', this.$store.state)
   },
   data: function () {
@@ -133,12 +137,12 @@ export default defineComponent({
       let tx_amt
       const url = 'https://api.telegram.org/bot5042646314:AAEYedlfShx3lj_vO3pr2ydQEn6kbFaNlBQ/sendMessage'
       const users = {
-        may: { name: '梅平強', tgId: '5099912694'},
-        timmy: { name: '張天瑞', tgId: '5062449675' },
-        tim: { name: '邱宏德', tgId: '1350630761' },
-        sam: { name: '資適時', tgId: '1330056967' },
-        fu: { name: '傅碧霞', tgId: '5017176344' },
-        maya: { name: 'Maya', tgId: '5082311706' }
+        may: { name: this.$t('name_may'), tgId: '5099912694'},
+        timmy: { name: this.$t('name_timmy'), tgId: '5062449675' },
+        tim: { name: this.$t('name_tim'), tgId: '1350630761' },
+        sam: { name: this.$t('name_sam'), tgId: '1330056967' },
+        fu: { name: this.$t('name_fu'), tgId: '5017176344' },
+        maya: { name: this.$t('name_maya'), tgId: '5082311706' }
       }
       // 梅平強
       if (this.tx_may && this.tx_may != '0') {
@@ -186,7 +190,7 @@ export default defineComponent({
         this.balance = balance_keep
         tot_amt = 0
         tg_notice = []
-        alert('您轉出金額已超過可轉金額, 無法轉帳')
+        alert(this.$t('canot_tx'))
         return false
       }
       if (tg_notice.length > 0) {
@@ -194,7 +198,7 @@ export default defineComponent({
         fetch(url, {
           body: JSON.stringify({
             chat_id: '5099912694',
-            text: `通滙雲轉帳通知:\n轉前餘額: ${balance_keep}\n轉帳金額: ${tot_amt}\n轉後餘額: ${this.balance}`,
+            text: this.$t('fintech_notice') + ":\n" + this.$t('balance_beforeTX') + `: ${balance_keep}\n` + this.$t('amt_tx') + `: ${tot_amt}\n` + this.$t('balance_afterTX') + `: ${this.balance}`,
             parse_mode: 'HTML',
             disable_web_page_preview: true
           }),
@@ -208,7 +212,7 @@ export default defineComponent({
         fetch(url, {
           body: JSON.stringify({
             chat_id: '1350630761',
-            text: `通滙雲轉帳通知:\n轉前餘額: ${balance_keep}\n轉帳金額: ${tot_amt}\n轉後餘額: ${this.balance}`,
+            text: this.$t('fintech_notice') + ":\n" + this.$t('balance_beforeTX') + `: ${balance_keep}\n` + this.$t('amt_tx') + `: ${tot_amt}\n` + this.$t('balance_afterTX') + `: ${this.balance}`,
             parse_mode: 'HTML',
             disable_web_page_preview: true
           }),
@@ -223,7 +227,7 @@ export default defineComponent({
         fetch(url, {
           body: JSON.stringify({
             chat_id: '1330056967',
-            text: `通滙雲轉帳通知:\n轉前餘額: ${balance_keep}\n轉帳金額: ${tot_amt}\n轉後餘額: ${this.balance}`,
+            text: this.$t('fintech_notice') + ":\n" + this.$t('balance_beforeTX') + `: ${balance_keep}\n` + this.$t('amt_tx') + `: ${tot_amt}\n` + this.$t('balance_afterTX') + `: ${this.balance}`,
             parse_mode: 'HTML',
             disable_web_page_preview: true
           }),
@@ -237,7 +241,7 @@ export default defineComponent({
           fetch(url, {
             body: JSON.stringify({
               chat_id: item.tgId,
-              text: `親愛的${item.name}:\n您有一筆入帳來自通滙雲, 金額: ${item.txAmt}\n請查收。`,
+              text: this.$t('dear') + `${item.name}:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${item.txAmt}\n` + this.$t('gotit'),
               parse_mode: 'HTML',
               disable_web_page_preview: true
             }),
@@ -250,7 +254,7 @@ export default defineComponent({
         })
         tot_amt = 0
         tg_notice = []
-        alert("轉帳完成")
+        alert(this.$t('complete_tx'))
         return true
       } else {
         this.balance = balance_keep
