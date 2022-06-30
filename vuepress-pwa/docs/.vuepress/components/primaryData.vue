@@ -43,6 +43,7 @@ export default defineComponent({
   },
   mounted() {
     this.$i18n.locale = this.$lang;
+    this.name = this.$t('name_maya')
   },
   filters: {
     capitalize: function (str) {
@@ -69,7 +70,7 @@ export default defineComponent({
       sortOrders[key] = 1
     })
     return {
-      name: this.$t('name_maya'),
+      name: '',
       phoneNumber: '+886928951753',
       account: '1234567895739874',
       sortKey: '',
