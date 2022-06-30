@@ -3,32 +3,47 @@
     <tbody>
       <tr>
         <td>
-          姓名<br />
-          <input type="text" placeholder="請輸入姓名" v-model="name" />
+          {{ $t('name') }}<br />
+          <input type="text" :placeholder="$t('input_name')" v-model="name" />
         </td>
       </tr>
       <tr>
         <td>
-          手機<br />
-          <input type="text" placeholder="手機號碼" v-model="phoneNumber" />
+          {{ $t('hand_phone') }}<br />
+          <input type="text" :placeholder="$t('phone_no')" v-model="phoneNumber" />
         </td>
       </tr>
       <tr>
         <td>
-          帳號<br /><br />
-          <input type="text" placeholder="請輸入帳號" v-model="account" />
+          {{ $t('account_no') }}<br /><br />
+          <input type="text" :placeholder="$t('input_account')" v-model="account" />
         </td>
       </tr>
       <tr>
         <td>
-          <input type="button" value="修改"  @click="modify" />
+          <input type="button" :value="$t('modify')"  @click="modify" />
         </td>
       </tr>
     </tbody>
   </table>
 </template>
 <script>
-export default {
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+export default defineComponent({
+  setup() {
+    const store = stores()
+    const { t, locale } = useI18n();
+    return {
+      t, locale,
+      store
+    }
+  },
+  mounted() {
+    this.$i18n.locale = this.$lang;
+  },
   filters: {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
@@ -54,7 +69,7 @@ export default {
       sortOrders[key] = 1
     })
     return {
-      name: 'Maya Chu',
+      name: this.$t('name_maya'),
       phoneNumber: '+886928951753',
       account: '1234567895739874',
       sortKey: '',
@@ -90,17 +105,17 @@ export default {
 
       const url = 'https://api.telegram.org/bot5042646314:AAEYedlfShx3lj_vO3pr2ydQEn6kbFaNlBQ/sendMessage'
       const users = {
-        may: { name: '梅平強', tgId: '5099912694'},
-        timmy: { name: '張天瑞', tgId: '5062449675' },
-        tim: { name: '邱宏德', tgId: '1350630761' },
-        sam: { name: '資適時', tgId: '1330056967' },
-        fu: { name: '傅碧霞', tgId: '5017176344' },
-        maya: { name: 'Maya', tgId: '5082311706' }
+        may: { name: this.$t('name_may'), tgId: '5099912694'},
+        timmy: { name: this.$t('name_timmy'), tgId: '5062449675' },
+        tim: { name: this.$t('name_tim'), tgId: '1350630761' },
+        sam: { name: this.$t('name_sam'), tgId: '1330056967' },
+        fu: { name: this.$t('name_fu'), tgId: '5017176344' },
+        maya: { name: this.$t('name_maya'), tgId: '5082311706' }
       }
       fetch(url, {
         body: JSON.stringify({
           chat_id: '5099912694',
-          text: `通滙雲資料更新通知: 資適時已於${updateTime.toLocaleString()} 修改基本資料完成`,
+          text: $t('fintech_notice_update') + ": " + $t('name_sam') + $t('has_already') + updateTime.toLocaleString() + " " + $t('updated'),
           parse_mode: 'HTML',
           disable_web_page_preview: true
         }),
@@ -114,7 +129,7 @@ export default {
       fetch(url, {
         body: JSON.stringify({
           chat_id: '1350630761',
-          text: `通滙雲資料更新通知: 資適時已於${updateTime.toLocaleString()} 修改基本資料完成`,
+          text: $t('fintech_notice_update') + ": " + $t('name_sam') + $t('has_already') + updateTime.toLocaleString() + " " + $t('updated'),
           parse_mode: 'HTML',
           disable_web_page_preview: true
         }),
@@ -128,7 +143,7 @@ export default {
       fetch(url, {
         body: JSON.stringify({
           chat_id: '1330056967',
-          text: `通滙雲資料更新通知: 資適時已於${updateTime.toLocaleString()} 修改基本資料完成`,
+          text: $t('fintech_notice_update') + ": " + $t('name_sam') + $t('has_already') + updateTime.toLocaleString() + " " + $t('updated'),
           parse_mode: 'HTML',
           disable_web_page_preview: true
         }),
@@ -139,10 +154,10 @@ export default {
         method: 'POST'
       })
 
-      alert('資料修改已存檔完成')
+      alert($t('done'))
     }
   }
-}
+})
 </script>
 <style scoped>
 table {

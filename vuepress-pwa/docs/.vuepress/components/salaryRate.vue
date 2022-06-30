@@ -18,11 +18,20 @@
   </table>
 </template>
 <script>
-// import { mapActions, mapState } from 'pinia'
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { mapState } from 'pinia'
-import { stores } from '../store'
 
-export default {
+export default defineComponent({
+  setup() {
+    const store = stores()
+    const { t, locale } = useI18n();
+    return {
+      t, locale,
+      store
+    }
+  },
   filters: {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
@@ -54,11 +63,19 @@ export default {
     })
     return {
       sortKey: '',
-      sortOrders: sortOrders
+      sortOrders: sortOrders,
+      list_data: []
     }
   },
   mounted() {
+    this.$i18n.locale = this.$lang;
     // console.log('textVar:', this.textVar)
+    this.list_data = [
+      { Name: this.$t('name_me'), Rate: '40%' },
+      { Name: this.$t('name_may'), Rate: '30%' },
+      { Name: this.$t('name_tim'), Rate: '10%' },
+      { Name: this.$t('name_sam'), Rate: '20%' }
+    ]
   },
   computed: {
     ...mapState(stores, ['textVar']),
@@ -66,7 +83,7 @@ export default {
       const sortKey = this.sortKey
       const filterKey = this.filterKey && this.filterKey.toLowerCase()
       const order = this.sortOrders[sortKey] || 1
-      let heroes = this.heroes
+      let heroes = this.list_data
       if (filterKey) {
         heroes = heroes.filter(function (row) {
           return Object.keys(row).some(function (key) {
@@ -90,7 +107,7 @@ export default {
       this.sortOrders[key] = this.sortOrders[key] * -1
     }
   }
-}
+})
 </script>
 <style scoped>
 table {

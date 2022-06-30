@@ -18,7 +18,28 @@
   </table>
 </template>
 <script>
-export default {
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+export default defineComponent({
+  setup() {
+    const store = stores()
+    const { t, locale } = useI18n();
+    return {
+      t, locale,
+      store
+    }
+  },
+  mounted() {
+    this.$i18n.locale = this.$lang;
+    this.list_data =[
+        { Name: this.$t('name_may'), Txtime: '2021-12-21 15:39', Amount: '3295' },
+        { Name: this.$t('name_timmy'), Txtime: '2021-10-07 10:54', Amount: '9000' },
+        { Name: this.$t('name_tim'), Txtime: '2022-01-13 19:05', Amount: '7000' },
+        { Name: this.$t('name_maya'), Txtime: '2021-06-19 09:34', Amount: '8000' }
+      ]
+  },
   filters: {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
@@ -50,7 +71,8 @@ export default {
     })
     return {
       sortKey: '',
-      sortOrders: sortOrders
+      sortOrders: sortOrders,
+      list_data: []
     }
   },
   computed: {
@@ -58,7 +80,7 @@ export default {
       const sortKey = this.sortKey
       const filterKey = this.filterKey && this.filterKey.toLowerCase()
       const order = this.sortOrders[sortKey] || 1
-      let heroes = this.heroes
+      let heroes = this.list_data
       if (filterKey) {
         heroes = heroes.filter(function (row) {
           return Object.keys(row).some(function (key) {
@@ -82,7 +104,7 @@ export default {
       this.sortOrders[key] = this.sortOrders[key] * -1
     }
   }
-}
+})
 </script>
 <style scoped>
 table {

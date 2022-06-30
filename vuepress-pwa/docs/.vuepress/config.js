@@ -38,13 +38,13 @@ module.exports = {
             { text: 'TX-booked', link: '/transaction/book.html' }
           ]},
           { text: 'Query', children: [
-            { text: 'Acc pre-set', link: '/query/account_binding.html' },
+            { text: 'Account binding', link: '/query/account_binding.html' },
             { text: 'Salary rate', link: '/query/salary_rate.html' },
             { text: 'History TX', link: '/query/history_record.html' },
             { text: 'Xchange calc', link: '/query/xchange.html' }
           ]},
           { text: 'Setting', children: [
-            { text: 'Acc pre-set', link: '/setting/account_binding.html' },
+            { text: 'Account binding', link: '/setting/account_binding.html' },
             { text: 'Salary rate', link: '/setting/salary_rate.html' },
             { text: 'Basic data', link: '/setting/primary_data.html' }
           ]},

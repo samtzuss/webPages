@@ -2,20 +2,35 @@
   <table style="display:inline-block;">
     <thead>
       <tr>
-        <th>姓名</th><th>比例</th>
+        <th>{{ t('name') }}</th><th>{{ t('rate') }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Maya Chu</td><td><input type="text" v-model="salaryRate[0]" /></td></tr>
-      <tr><td>梅平強</td><td><input type="text" v-model="salaryRate[1]" /></td></tr>
-      <tr><td>邱宏德</td><td><input type="text" v-model="salaryRate[2]" /></td></tr>
-      <tr><td>Sam</td><td><input type="text" v-model="salaryRate[3]" /></td></tr>
-      <tr><td></td><td><input type="button" value="比例設定"  @click="salaryRateSet" /></td></tr>
+      <tr><td>{{ t('name_maya') }}</td><td><input type="text" v-model="salaryRate[0]" /></td></tr>
+      <tr><td>{{ t('name_may') }}</td><td><input type="text" v-model="salaryRate[1]" /></td></tr>
+      <tr><td>{{ t('name_tim') }}</td><td><input type="text" v-model="salaryRate[2]" /></td></tr>
+      <tr><td>{{ t('name_sam') }}</td><td><input type="text" v-model="salaryRate[3]" /></td></tr>
+      <tr><td></td><td><input type="button" :value="$t('submit')" @click="salaryRateSet" /></td></tr>
     </tbody>
   </table>
 </template>
 <script>
-export default {
+import { stores } from "../store/index.js"
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+export default defineComponent({
+  setup() {
+    const store = stores()
+    const { t, locale } = useI18n();
+    return {
+      t, locale,
+      store
+    }
+  },
+  mounted() {
+    this.$i18n.locale = this.$lang;
+  },
   filters: {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
@@ -32,7 +47,7 @@ export default {
   },
   methods: {
     salaryRateSet: () => {
-      alert('薪轉比例設定完成')
+      alert(this.$t('done'))
       /*
       if ((this.salaryRate.reduce((partial_sum, a) => partial_sum + a, 0)) != 100) {
         alert('薪轉比例總額錯誤')
@@ -42,7 +57,7 @@ export default {
       */
     }
   }
-}
+})
 </script>
 <style scoped>
 table {
