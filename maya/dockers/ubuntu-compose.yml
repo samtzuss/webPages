@@ -10,10 +10,10 @@ services:
     hostname: 'uuu'
     restart: always
     ports:
-      - '65120:80'
-      - '65121:443'
-      - '65122:22'
-      - '65123:65123'
+      - '64120:80'
+      - '64121:443'
+      - '64122:22'
+      - '64123:64123'
     command: tail -f /dev/null
     # command:
     #   - /bin/bash

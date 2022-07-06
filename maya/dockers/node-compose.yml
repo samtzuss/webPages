@@ -6,7 +6,7 @@ services:
     image: docker.io/bitnami/node:latest
     # command: sh -c 'npm install && npm start'
     # ports:
-      # - 3000:3000
+      # - '3000:3000'
     volumes:
       - /home/apps:/app
     environment:

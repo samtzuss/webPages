@@ -5,7 +5,7 @@ services:
     restart: always
     container_name: db
     ports:
-      - 65102:3306
+      - '64102:3306'
     volumes:
       - ${rootPath}/mysql/db:/var/lib/mysql
       - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d

@@ -13,7 +13,7 @@ services:
     hostname: adminer
     restart: always
     ports:
-      - '65101:80'
+      - '64101:80'
     environment:
       - 'TZ=Asia/Taipei'
     networks:
@@ -30,7 +30,7 @@ services:
     hostname: db
     restart: always
     ports:
-      - 65102:3306
+      - '64102:3306'
     volumes:
       - ${rootPath}/mysql/db:/var/lib/mysql
       - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d
@@ -56,7 +56,7 @@ services:
     tty: true # Enables debugging capabilities when attached to this container.
     # command: sh -c 'npm install && npm start'
     # ports:
-    #   - 3000:3000
+    #   - '3000:3000'
     volumes:
       - /home/apps:/app
     environment:
@@ -78,9 +78,9 @@ services:
     restart: always
     tty: true
     ports:
-      - 80:80
-      - 443:443
-      - 65107:65107
+      - '80:80'
+      - '443:443'
+      - '64107:64107'
     volumes:
       - ${rootPath}/webs/html:/etc/nginx/html
       - ${nginxConfig}/nginx.conf:/etc/nginx/nginx.conf
@@ -102,7 +102,33 @@ services:
       options:
         max-size: '10k'
         max-file: '2'
-
+  samwp:
+    image: wordpress
+    container_name: samwp
+    hostname: samwp
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '64110:80'
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=0926721122
+      - WORDPRESS_DB_NAME=maya1
+      - TZ=Asia/Taipei
+    volumes:
+      - samwp:/var/www/html
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: ${gateWay3}.16
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
   maya1:
     image: wordpress
     container_name: maya1
@@ -111,7 +137,7 @@ services:
     depends_on:
       - db
     ports:
-      - 65111:80
+      - '64111:80'
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=root
@@ -138,7 +164,7 @@ services:
     depends_on:
       - db
     ports:
-      - 65112:80
+      - '64112:80'
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=tzuss
@@ -165,7 +191,7 @@ services:
     depends_on:
       - db
     ports:
-      - 65113:80
+      - '64113:80'
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=tzuss
@@ -192,7 +218,7 @@ services:
     depends_on:
       - db
     ports:
-      - 65114:80
+      - '64114:80'
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=tzuss
@@ -219,7 +245,7 @@ services:
     depends_on:
       - db
     ports:
-      - 65115:80
+      - '64115:80'
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=tzuss

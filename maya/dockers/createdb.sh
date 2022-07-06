@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "0926721122" | sudo -S docker exec db mysql -u root -p0926721122 -e "create database if not exists samwp character set = utf8mb4 collate = utf8mb4_general_ci;" -e "create database if not exists maya1 character set = utf8mb4 collate = utf8mb4_general_ci;" -e "create database if not exists maya2 character set = utf8mb4 collate = utf8mb4_general_ci;" -e "create database if not exists maya3 character set = utf8mb4 collate = utf8mb4_general_ci;" -e "create database if not exists maya4 character set = utf8mb4 collate = utf8mb4_general_ci;" -e "create database if not exists maya5 character set = utf8mb4 collate = utf8mb4_general_ci;"
