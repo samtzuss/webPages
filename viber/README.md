@@ -5,6 +5,30 @@ https://developers.viber.com/docs/api/nodejs-bot-api/
 
 npm install viber-bot --save
 
+## viber webhook
+https://developers.viber.com/docs/api/rest-bot-api/#get-started
+
+url:
+https://chatapi.viber.com/pa/set_webhook
+
+X-Viber-Auth-Token: 4f71d8d37727de3c-8de4b5046e509620-7df60b01af1130bc
+
+post data
+
+{
+  "url":"https://viber.fintechlife.net:64107/webhook",
+  "event_types":[
+    "delivered",
+    "seen",
+    "failed",
+    "subscribed",
+    "unsubscribed",
+    "conversation_started"
+  ],
+  "send_name": true,
+  "send_photo": true
+}
+
 ## 開發者帳號
 https://partners.viber.com/account/5724595004113411644/info
 
