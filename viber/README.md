@@ -33,6 +33,6 @@ arena.fintechlife.net (220.135.157.27 小巨蛋主機)
 wp.fintechlife.net
 viber.fintechlife.net
 
-## nginx to ssh
+## nginx to ssh / remoteDesk
 ref:
 https://monotone.github.io/2017/12/16/reverse-proxy-for-ssh-by-nginx/
