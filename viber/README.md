@@ -32,3 +32,7 @@ ip: 220.135.157.27
 arena.fintechlife.net (220.135.157.27 小巨蛋主機)
 wp.fintechlife.net
 viber.fintechlife.net
+
+## nginx to ssh
+ref:
+https://monotone.github.io/2017/12/16/reverse-proxy-for-ssh-by-nginx/

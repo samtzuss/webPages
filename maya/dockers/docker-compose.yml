@@ -115,7 +115,7 @@ services:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=root
       - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya1
+      - WORDPRESS_DB_NAME=samwp
       - TZ=Asia/Taipei
     volumes:
       - samwp:/var/www/html
@@ -150,7 +150,7 @@ services:
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
-        ipv4_address: ${gateWay3}.16
+        ipv4_address: ${gateWay3}.17
     logging:
       driver: 'local'
       options:
@@ -177,7 +177,7 @@ services:
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
-        ipv4_address: ${gateWay3}.17
+        ipv4_address: ${gateWay3}.18
     logging:
       driver: 'local'
       options:
@@ -204,7 +204,7 @@ services:
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
-        ipv4_address: ${gateWay3}.18
+        ipv4_address: ${gateWay3}.19
     logging:
       driver: 'local'
       options:
@@ -231,7 +231,7 @@ services:
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
-        ipv4_address: ${gateWay3}.19
+        ipv4_address: ${gateWay3}.20
     logging:
       driver: 'local'
       options:
@@ -258,7 +258,7 @@ services:
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
-        ipv4_address: ${gateWay3}.20
+        ipv4_address: ${gateWay3}.21
     logging:
       driver: 'local'
       options:
