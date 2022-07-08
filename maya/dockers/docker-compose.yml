@@ -4,6 +4,26 @@
 # mysql/conf.d,db
 # projects/maya/maya1,maya2,maya3,maya4,maya5
 # webs/html
+# path:
+# /home/apps
+#   mysql/db
+#   mysql/conf.d
+
+#   node
+
+#   webs/html
+#   dockers/nginx/nginx.conf
+#   dockers/nginx/conf.d
+
+#   projects
+#     wordpress
+#       samwp
+#       maya/maya1
+#       maya/maya2
+#       maya/maya3
+#       maya/maya4
+#       maya/maya5
+#     viber
 
 version: '3.9'
 services:
@@ -58,7 +78,8 @@ services:
     # ports:
     #   - '3000:3000'
     volumes:
-      - /home/apps:/app
+      - ${rootPath}/node:/app
+    working_dir: /app
     environment:
       - TZ=Asia/Taipei
     extra_hosts:
@@ -118,7 +139,7 @@ services:
       - WORDPRESS_DB_NAME=samwp
       - TZ=Asia/Taipei
     volumes:
-      - samwp:/var/www/html
+      - ${projects}/samwp:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
@@ -145,7 +166,7 @@ services:
       - WORDPRESS_DB_NAME=maya1
       - TZ=Asia/Taipei
     volumes:
-      - ${maya}1:/var/www/html
+      - ${projects}/${maya}1:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
@@ -172,7 +193,7 @@ services:
       - WORDPRESS_DB_NAME=maya2
       - TZ=Asia/Taipei
     volumes:
-      - ${maya}2:/var/www/html
+      - ${projects}/${maya}2:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
@@ -199,7 +220,7 @@ services:
       - WORDPRESS_DB_NAME=maya3
       - TZ=Asia/Taipei
     volumes:
-      - ${maya}3:/var/www/html
+      - ${projects}/${maya}3:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
@@ -226,7 +247,7 @@ services:
       - WORDPRESS_DB_NAME=maya4
       - TZ=Asia/Taipei
     volumes:
-      - ${maya}4:/var/www/html
+      - ${projects}/${maya}4:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
@@ -253,7 +274,7 @@ services:
       - WORDPRESS_DB_NAME=maya5
       - TZ=Asia/Taipei
     volumes:
-      - ${maya}5:/var/www/html
+      - ${projects}/${maya}5:/var/www/html
     extra_hosts:
       - 'hostFather:${gateWay3}.1'
     networks:
