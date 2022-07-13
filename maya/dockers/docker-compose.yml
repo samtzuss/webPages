@@ -92,21 +92,31 @@ services:
       options:
         max-size: '10k'
         max-file: '2'
+  # sudo docker exec -ti nginx nginx -s reload
   nginx:
     image: nginx
     container_name: nginx
     hostname: nginx
     restart: always
     tty: true
+    depends_on:
+      - 'samwp'
+      - 'maya1'
+      - 'maya2'
+      - 'maya3'
+      - 'maya4'
+      - 'maya5'
     ports:
       - '80:80'
       - '443:443'
+      - '64104:80'
+      - '64105:443'
       - '64107:64107'
     volumes:
-      - ${rootPath}/webs/html:/etc/nginx/html
+      - ${rootPath}/webs:/etc/nginx/html
       - ${nginxConfig}/nginx.conf:/etc/nginx/nginx.conf
       - ${nginxConfig}/conf.d:/etc/nginx/conf.d
-      - /tmp/nginx-log:/var/log/nginx
+      # - ${nginxTmp}:/tmp
       # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer
       # - ${rootPath}/nginx/rsa/api.fintechlife.net.csr:/etc/nginx/ssl/rsa/api.fintechlife.net.csr
       # - ${rootPath}/nginx/ecc/fullchain.cer:/etc/nginx/ssl/ecc/fullchain.cer
