@@ -4,26 +4,6 @@
 # mysql/conf.d,db
 # projects/maya/maya1,maya2,maya3,maya4,maya5
 # webs/html
-# path:
-# /home/apps
-#   mysql/db
-#   mysql/conf.d
-
-#   node
-
-#   webs/html
-#   dockers/nginx/nginx.conf
-#   dockers/nginx/conf.d
-
-#   projects
-#     wordpress
-#       samwp
-#       maya/maya1
-#       maya/maya2
-#       maya/maya3
-#       maya/maya4
-#       maya/maya5
-#     viber
 
 version: '3.9'
 services:
@@ -116,7 +96,10 @@ services:
       - ${rootPath}/webs:/etc/nginx/html
       - ${nginxConfig}/nginx.conf:/etc/nginx/nginx.conf
       - ${nginxConfig}/conf.d:/etc/nginx/conf.d
-      # - ${nginxTmp}:/tmp
+      - ${nginxConfig}/ssl/certificate.crt:/etc/nginx/certificate.crt
+      - ${nginxConfig}/ssl/private.key:/etc/nginx/private.key
+      - ${nginxTmp}/log/access.log:/tmp/log/access.log
+      - ${nginxTmp}/log/error.log:/tmp/log/error.log
       # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer
       # - ${rootPath}/nginx/rsa/api.fintechlife.net.csr:/etc/nginx/ssl/rsa/api.fintechlife.net.csr
       # - ${rootPath}/nginx/ecc/fullchain.cer:/etc/nginx/ssl/ecc/fullchain.cer

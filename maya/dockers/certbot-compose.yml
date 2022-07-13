@@ -1,0 +1,42 @@
+
+# docker pull certbot/certbot
+# from: https://hub.docker.com/r/certbot/certbot
+# sudo docker run -it --rm --name certbot \
+# -v "/home/apps/dockers/certbot/letsencrypt:/etc/letsencrypt" \
+# -v "/home/apps/dockers/certbot/lib/letsencrypt:/var/lib/letsencrypt" \
+# -v "/home/apps/dockers/certbot/log:/var/log/letsencrypt" \
+# -p "64120:80" \
+# -p "64121:443" \
+# certbot/certbot certonly
+# ref: https://eff-certbot.readthedocs.io/en/stable/install.html#running-with-docker
+# certificate in the directory ${nginxCertbot}/letsencrypt/live
+# sudo docker exec certbot certonly
+
+version: '3.9'
+services:
+  certbot:
+    image: 'certbot/certbot'
+    container_name: 'certbot'
+    hostname: 'certbot'
+    depends_on:
+      - 'nginx'
+    ports:
+      - '64120:80'
+      - '64121:443'
+    environment:
+      - 'TZ=Asia/Taipei'
+    volumes:
+      - '${nginxCertbot}/letsencrypt:/etc/letsencrypt'
+      - '${nginxCertbot}/lib/letsencrypt:/var/lib/letsencrypt'
+      - '${nginxCertbot}/log:/var/log/letsencrypt'
+    command: tail -f /dev/null
+    extra_hosts:
+      - 'hostFather:${gateWay3}.1'
+    networks:
+      appsNet:
+        ipv4_address: '${gateWay3}.22'
+    logging:
+      driver: 'local'
+      options:
+        max-size: '10k'
+        max-file: '2'
