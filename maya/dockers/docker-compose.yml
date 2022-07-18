@@ -98,6 +98,8 @@ services:
       - ${nginxConfig}/conf.d:/etc/nginx/conf.d
       - ${nginxConfig}/ssl/certificate.crt:/etc/nginx/certificate.crt
       - ${nginxConfig}/ssl/private.key:/etc/nginx/private.key
+      - ${nginxConfig}/ssl/fullchain.pem:/etc/nginx/fullchain.pem
+      - ${nginxConfig}/ssl/privkey.pem:/etc/nginx/privkey.pem
       - ${nginxTmp}/log/access.log:/tmp/log/access.log
       - ${nginxTmp}/log/error.log:/tmp/log/error.log
       # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer

@@ -23,3 +23,21 @@ vue ui --host localhost
 
 [github page]
 root: repo/docs
+
+## wordpress config
+wp-config-docker.php
+
+# command
+## docker
+sudo docker-compose down
+sudo docker-compose up -d
+
+## ssh
+ssh -p 65022 tzuss@fintechlife.net # arena
+ssh -p 65023 tzuss@fintechlife.net # whitefang
+
+## restart nginx
+echo "0926721122" | sudo -S docker exec nginx nginx -s reload
+
+## wordpress url
+http://fintechlife.net:64104/samwp/
