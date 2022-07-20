@@ -29,9 +29,10 @@ wp-config-docker.php
 
 # command
 ## docker
-sudo docker-compose down
 sudo docker-compose up -d
+sudo docker-compose down
 sudo docker run certbot/certbot certificates
+sudo docker-compose restart nginx
 
 ## ssh
 ssh -p 65022 tzuss@fintechlife.net # arena

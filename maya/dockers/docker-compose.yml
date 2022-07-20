@@ -55,10 +55,12 @@ services:
     hostname: node
     tty: true # Enables debugging capabilities when attached to this container.
     # command: sh -c 'npm install && npm start'
-    # ports:
-    #   - '3000:3000'
+    ports:
+      - '64108:64108'
     volumes:
-      - ${rootPath}/node:/app
+      - '${rootPath}/node:/app'
+      - '${nginxConfig}/ssl/fullchain.pem:/cert/fullchain.pem'
+      - '${nginxConfig}/ssl/privkey.pem:/cert/privkey.pem'
     working_dir: /app
     environment:
       - TZ=Asia/Taipei
@@ -101,15 +103,10 @@ services:
       - ${nginxConfig}/ssl/private.key:/etc/nginx/private.key
       - ${nginxConfig}/ssl/fullchain.pem:/etc/nginx/fullchain.pem
       - ${nginxConfig}/ssl/privkey.pem:/etc/nginx/privkey.pem
-      - ${nginxTmp}/log/access.log:/tmp/log/access.log
-      - ${nginxTmp}/log/error.log:/tmp/log/error.log
-      # - ${rootPath}/nginx/rsa/fullchain.cer:/etc/nginx/ssl/rsa/fullchain.cer
-      # - ${rootPath}/nginx/rsa/api.fintechlife.net.csr:/etc/nginx/ssl/rsa/api.fintechlife.net.csr
-      # - ${rootPath}/nginx/ecc/fullchain.cer:/etc/nginx/ssl/ecc/fullchain.cer
-      # - ${rootPath}/nginx/ecc/api.fintechlife.net.csr:/etc/nginx/ssl/ecc/api.fintechlife.net.csr
-    environment:
       - TZ=Asia/Taipei
     extra_hosts:
+      - 'whitefang:192.168.221.199'
+      - 'arena:192.168.221.200'
       - 'hostFather:${gateWay3}.1'
     networks:
       appsNet:
