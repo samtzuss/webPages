@@ -59,8 +59,8 @@ services:
       - '64108:64108'
     volumes:
       - '${rootPath}/node:/app'
-      - '${nginxConfig}/ssl/fullchain.pem:/cert/fullchain.pem'
-      - '${nginxConfig}/ssl/privkey.pem:/cert/privkey.pem'
+      - '${nginxConfig}/ssl/fullchain.pem:/app/ssl/fullchain.pem'
+      - '${nginxConfig}/ssl/privkey.pem:/app/ssl/cert/privkey.pem'
     working_dir: /app
     environment:
       - TZ=Asia/Taipei
