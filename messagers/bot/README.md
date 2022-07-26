@@ -6,6 +6,12 @@ This project was bootstrapped with
 Always feel free to open an issue to
 [Bottender](https://github.com/Yoctol/bottender/issues) repository.
 
+## install bottender
+
+npx create-bottender-app bot
+cd bot
+npm install
+
 ## Configuration
 
 ### The `bottender.config.js` File
@@ -60,3 +66,11 @@ Runs the test cases using [Jest](https://jestjs.io/).
 To learn Bottender, check out the [Bottender documentation](https://bottender.js.org/docs/en/getting-started).
 
 For more examples, see [Bottender examples](https://github.com/Yoctol/bottender/tree/master/examples).
+
+## note
+env_file: for container
+
+## command
+sudo docker-compose  run --rm --service-ports bot npm install
+sudo docker-compose  run --rm --service-ports bot /bin/bash -c "npm install -g npm@8.15.0 && npm install"
+sudo docker-compose  run --rm --service-ports bot npm run dev -- --console
