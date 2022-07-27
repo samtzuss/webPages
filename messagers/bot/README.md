@@ -79,4 +79,4 @@ sudo docker-compose  run --rm --service-ports bot npm run dev -- --console
 sudo docker-compose  run --rm --service-ports bot bash -c "(DEBUG=bottender:dialog; npm run dev -- --console)"
 sudo docker-compose  run --rm --service-ports bot npm run dev
 sudo docker-compose  exec --rm --service-ports bot npx bottender telegram webhook set -w http://fintechlife.net:63107/webhooks/telegram
-sudo docker exec 1257825f1155 npx bottender telegram webhook set -w http://fintechlife.net:63107/webhooks/telegram
+sudo docker exec 1257825f1155 npx bottender telegram webhook set -w https://fintechlife.net:63107/webhooks/telegram
