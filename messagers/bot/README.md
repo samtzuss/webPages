@@ -11,6 +11,7 @@ Always feel free to open an issue to
 npx create-bottender-app bot
 cd bot
 npm install
+npm i body-parser express -s
 
 ## Configuration
 
@@ -72,5 +73,10 @@ env_file: for container
 
 ## command
 sudo docker-compose  run --rm --service-ports bot npm install
+sudo docker-compose  run --rm --service-ports bot npm run dev-s
 sudo docker-compose  run --rm --service-ports bot /bin/bash -c "npm install -g npm@8.15.0 && npm install"
 sudo docker-compose  run --rm --service-ports bot npm run dev -- --console
+sudo docker-compose  run --rm --service-ports bot bash -c "(DEBUG=bottender:dialog; npm run dev -- --console)"
+sudo docker-compose  run --rm --service-ports bot npm run dev
+sudo docker-compose  exec --rm --service-ports bot npx bottender telegram webhook set -w http://fintechlife.net:63107/webhooks/telegram
+sudo docker exec 1257825f1155 npx bottender telegram webhook set -w http://fintechlife.net:63107/webhooks/telegram
