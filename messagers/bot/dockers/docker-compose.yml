@@ -12,6 +12,7 @@ services:
       - '63107:63107'
     volumes:
       - '${rootPath}/projects:/app'
+      - '/tmp:/go'
     working_dir: '/app'
     environment:
       - 'PORT=63107'
