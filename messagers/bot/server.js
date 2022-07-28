@@ -10,9 +10,6 @@ const options = {
   cert: fs.readFileSync('./ssl/fullchain.pem', 'utf8')
 };
 
-console.log(options.key);
-console.log(options.cert);
-
 const app = bottender({
   dev: process.env.NODE_ENV !== 'production',
 });

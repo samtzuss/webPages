@@ -83,6 +83,7 @@ sudo docker exec 1257825f1155 npx bottender telegram webhook set -w https://fint
 
 sudo docker-compose up -d node
 sudo docker exec -ti -w /app/messagers/bot node bash
-sudo docker exec -i -w /app/messagers/bot node npm run dev -- --console
-sudo docker exec -i -w /app/messagers/bot node npm run dev
-sudo docker exec -i -w /app/messagers/bot node npx bottender telegram webhook set -w https://fintechlife.net:63107/webhooks/telegram
+sudo docker exec node npm install -g npm@8.15.1
+sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" node npm run dev -- --console
+sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messagers/bot/ssl" node npm run dev-s
+sudo docker exec -i -w /app/messagers/bot node npx bottender telegram webhook set -w https://fintechlife.net:8443/webhooks/telegram
