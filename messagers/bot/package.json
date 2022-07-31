@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev-cs": "nodemon server.js",
-    "start-cs": "node server.js",
+    "startrs-cs": "node server.js",
     "dev": "bottender dev",
     "start": "bottender start",
     "lint": "eslint . ",
