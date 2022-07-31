@@ -73,7 +73,7 @@ env_file: for container
 
 ## command
 sudo docker-compose  run --rm --service-ports bot npm install
-sudo docker-compose  run --rm --service-ports bot npm run dev-s
+sudo docker-compose  run --rm --service-ports bot npm run dev-cs
 sudo docker-compose  run --rm --service-ports bot /bin/bash -c "npm install -g npm@8.15.0 && npm install"
 sudo docker-compose  run --rm --service-ports bot npm run dev -- --console
 sudo docker-compose  run --rm --service-ports bot bash -c "(DEBUG=bottender:dialog; npm run dev -- --console)"
@@ -82,6 +82,8 @@ sudo docker-compose  exec --rm --service-ports bot npx bottender telegram webhoo
 sudo docker exec 1257825f1155 npx bottender telegram webhook set -w https://fintechlife.net:63107/webhooks/telegram
 
 sudo docker-compose up -d node
+sudo docker-compose down
+sudo docker-compose restart node
 sudo docker exec -ti -w /app/messagers/bot node bash
 sudo docker exec node npm install -g npm@8.15.1
 sudo docker exec -w /app/messagers/bot node npm list express body-parser nodemon
