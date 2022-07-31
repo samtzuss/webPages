@@ -30,33 +30,6 @@ services:
       options:
         max-size: '10k'
         max-file: '2'
-  bot:
-    image: 'node'
-    container_name: 'bot'
-    hostname: 'bot'
-    tty: true
-    # ports:
-    #   - '63107:63107'
-    # env_file: # for container
-    #   - ./.env
-    environment:
-      - 'PORT=63107'
-      - 'TZ=Asia/Taipei'
-    volumes:
-      - '${rootPath}/projects/messagers/bot:/apps/bot'
-    working_dir: '/apps/bot'
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-      - 'whitefang:${ip_whitefang}'
-      - 'arena:${ip_arena}'
-    networks:
-      eagle:
-        ipv4_address: ${gateWay3}.21
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
 networks:
   eagle:
     name: 'eagle'
