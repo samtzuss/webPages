@@ -85,6 +85,7 @@ sudo docker-compose up -d node
 sudo docker-compose down
 sudo docker-compose restart node
 sudo docker exec -ti -w /app/messagers/bot node bash
+sudo docker exec node npm -v
 sudo docker exec node npm install -g npm@8.15.1
 sudo docker exec -w /app/messagers/bot node npm list express body-parser nodemon
 
