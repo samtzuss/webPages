@@ -94,6 +94,7 @@ sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" node npm run dev -- --c
 
 ## ssl mode
 sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messagers/bot/ssl" node npm run dev-cs
+sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messagers/bot/ssl" node npm run start-cs
 sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messagers/bot/ssl" node nodemon -v
 
 ##
@@ -122,3 +123,11 @@ Bot basic ID: @034suphj
 ngrok
 localtunnel
 serveo
+
+viber: https://partners.viber.com/account/5724595004113411644/info
+
+fintech
+VIBER_ACCESS_TOKEN=4f71d8d37727de3c-8de4b5046e509620-7df60b01af1130bc
+
+fintechviber
+VIBER_ACCESS_TOKEN=4f969354e7e7e0c6-641d0813fdcd12c0-39815f07bee037a0
