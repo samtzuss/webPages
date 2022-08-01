@@ -98,3 +98,27 @@ sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messa
 
 ##
 sudo docker exec -i -w /app/messagers/bot node npx bottender telegram webhook set -w https://fintechlife.net:8443/webhooks/telegram
+sudo docker exec -i -w /app/messagers/bot node npx bottender line webhook set -w https://fintechlife.net:8443/webhooks/line
+
+## line
+建立 LINE Channel
+https://ithelp.ithome.com.tw/articles/10221681
+
+登入 LINE 帳號
+https://developers.line.biz/zh-hant/
+(需手機LINE驗證)
+
+LINE_ACCESS_TOKEN=
+LINE_CHANNEL_SECRET=
+
+Provider > Create New Channel >
+Channel ID: 1657349862
+Channel secret: 6b4780b517ae2e72ea15cba202be449c
+Channel access token:
+xnMun3A5n5BDtKsfyGSu1uXkjBmmgbl6Fk3UnZOCyfzdbZBYoPap7rJM5byS8+61YNZUQprMoUUJaX/YQTiGOZV0j+cfPIgpwm/8IhWq+gFTOTEdATBnvWXpMAN+vOtUL0PmmhhxCQjwCkJOmyltNwdB04t89/1O/w1cDnyilFU=
+Your user ID: U2fc39b3618671589bacad54599afad85
+Bot basic ID: @034suphj
+
+ngrok
+localtunnel
+serveo
