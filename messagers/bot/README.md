@@ -71,6 +71,92 @@ For more examples, see [Bottender examples](https://github.com/Yoctol/bottender/
 ## note
 env_file: for container
 
+## LINE bot
+建立 LINE Channel
+https://ithelp.ithome.com.tw/articles/10221681
+
+登入 LINE 帳號
+https://developers.line.biz/zh-hant/
+(需手機LINE驗證)
+
+LINE_ACCESS_TOKEN=
+LINE_CHANNEL_SECRET=
+
+Provider > Create New Channel >
+Channel ID: 1657349862
+Channel secret: 6b4780b517ae2e72ea15cba202be449c
+Channel access token:
+xnMun3A5n5BDtKsfyGSu1uXkjBmmgbl6Fk3UnZOCyfzdbZBYoPap7rJM5byS8+61YNZUQprMoUUJaX/YQTiGOZV0j+cfPIgpwm/8IhWq+gFTOTEdATBnvWXpMAN+vOtUL0PmmhhxCQjwCkJOmyltNwdB04t89/1O/w1cDnyilFU=
+Your user ID: U2fc39b3618671589bacad54599afad85
+Bot basic ID: @034suphj
+
+ngrok
+localtunnel
+serveo
+
+## viber bot (不成功)
+viber: https://partners.viber.com/account/5724595004113411644/info
+
+fintech
+VIBER_ACCESS_TOKEN=4f71d8d37727de3c-8de4b5046e509620-7df60b01af1130bc
+
+fintechviber
+VIBER_ACCESS_TOKEN=4f969354e7e7e0c6-641d0813fdcd12c0-39815f07bee037a0
+
+## slack bot
+ref:
+https://bottender.js.org/docs/channel-slack-setup
+
+### 前置需要
+a Slack Account
+a Slack Workspace
+
+### step
+login
+https://api.slack.com
+
+Create New App > Install App to Workspace > \${YourApp} → OAuth & Permissions
+\${YourApp} → OAuth & Permissions → Scopes → Bot Token Scopes
+Install App to Workspace
+
+### bot允發訊息
+api > App Home (左) > Messages Tab > Allow users to send Slash commands and messages from the messages tab (v)
+
+slack Bot User OAuth access Token:
+xoxb-3756582054468-3894926396449-ZoMxoaXeKlk6O9xwZUT2ukde
+
+Signing Secret:
+07b329269bf3305faa8900927fef0fe0
+
+https://fintechlife.net:8443/webhooks/slack
+
+Twilio WhatsApp WHATSAPP_AUTH_TOKEN
+
+https://www.twilio.com/try-twilio
+
+帳號用戶名稱為 admin，密碼為 secret
+
+https://www.twilio.com/try-twilio
+samtzuss@yahoo.com.tw
+fu09267211220931232568
+
+Account SID:
+ACea4736ebda63931d5f3a474a60d75cc4
+
+auth token:
+0dff16b0fe1ae7b5dbcfb6c8779c13d9
+
+My Twilio phone number:
++18304980158
+
+https://business.whatsapp.com/
+https://developers.facebook.com/docs/whatsapp/cloud-api/get-started
+
+fb
+應用程式編號： 746165453332230
+app id: a40ed908fab5111a55f90ae75a5fb658
+
+
 ## command
 sudo docker-compose  run --rm --service-ports bot npm install
 sudo docker-compose  run --rm --service-ports bot npm run dev-cs
@@ -100,34 +186,3 @@ sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messa
 ##
 sudo docker exec -i -w /app/messagers/bot node npx bottender telegram webhook set -w https://fintechlife.net:8443/webhooks/telegram
 sudo docker exec -i -w /app/messagers/bot node npx bottender line webhook set -w https://fintechlife.net:8443/webhooks/line
-
-## line
-建立 LINE Channel
-https://ithelp.ithome.com.tw/articles/10221681
-
-登入 LINE 帳號
-https://developers.line.biz/zh-hant/
-(需手機LINE驗證)
-
-LINE_ACCESS_TOKEN=
-LINE_CHANNEL_SECRET=
-
-Provider > Create New Channel >
-Channel ID: 1657349862
-Channel secret: 6b4780b517ae2e72ea15cba202be449c
-Channel access token:
-xnMun3A5n5BDtKsfyGSu1uXkjBmmgbl6Fk3UnZOCyfzdbZBYoPap7rJM5byS8+61YNZUQprMoUUJaX/YQTiGOZV0j+cfPIgpwm/8IhWq+gFTOTEdATBnvWXpMAN+vOtUL0PmmhhxCQjwCkJOmyltNwdB04t89/1O/w1cDnyilFU=
-Your user ID: U2fc39b3618671589bacad54599afad85
-Bot basic ID: @034suphj
-
-ngrok
-localtunnel
-serveo
-
-viber: https://partners.viber.com/account/5724595004113411644/info
-
-fintech
-VIBER_ACCESS_TOKEN=4f71d8d37727de3c-8de4b5046e509620-7df60b01af1130bc
-
-fintechviber
-VIBER_ACCESS_TOKEN=4f969354e7e7e0c6-641d0813fdcd12c0-39815f07bee037a0

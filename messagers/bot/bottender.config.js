@@ -34,7 +34,7 @@ module.exports = {
       verifyToken: process.env.MESSENGER_VERIFY_TOKEN,
     },
     whatsapp: {
-      enabled: false,
+      enabled: true,
       path: '/webhooks/whatsapp',
       accountSid: process.env.WHATSAPP_ACCOUNT_SID,
       authToken: process.env.WHATSAPP_AUTH_TOKEN,
@@ -52,7 +52,7 @@ module.exports = {
       accessToken: process.env.TELEGRAM_ACCESS_TOKEN,
     },
     slack: {
-      enabled: false,
+      enabled: true,
       path: '/webhooks/slack',
       accessToken: process.env.SLACK_ACCESS_TOKEN,
       signingSecret: process.env.SLACK_SIGNING_SECRET,

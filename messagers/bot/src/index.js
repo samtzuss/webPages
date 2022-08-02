@@ -1,11 +1,11 @@
 const { router, route, text, payload } = require('bottender/router');
 
 async function SayHi(context) {
-  await context.sendText('Hi!');
+  await context.sendText('您說的是 Hi!');
 }
 
 async function SayHello(context) {
-  await context.sendText('Hello!');
+  await context.sendText('您說的是 Hello!');
 }
 
 
@@ -41,7 +41,7 @@ module.exports = async function App(context) {
     text('hi', SayHi),
     // return the `SayHello` action when receiving "hello" text messages
     text('hello', SayHello),
-    text(/^\/(?<command>\S+)$/i, Command),
+    text(/^\.(?<command>\S+)$/i, Command),
     text('*', Unknown),
 
     payload('GET_STARTED', SayHi),
