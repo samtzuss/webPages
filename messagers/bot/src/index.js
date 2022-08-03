@@ -2,7 +2,7 @@ const { router, route, text, payload } = require('bottender/router');
 const { getClient } = require('bottender');
 
 const client_telegram = getClient('telegram');
-let meInfo;
+let meInfo = '';
 
 async function SayHi(context) {
   await context.sendText('您說的是 Hi!' + meInfo);
@@ -40,11 +40,10 @@ module.exports = async function App(context) {
 
   // await context.sendText('Welcome to Bottender ' + JSON.stringify(context.session));
 
-  if (context.platform === 'telegram') {
-    const obj = await client_telegram.getMe();
-    meInfo = JSON.stringify(await context.getChatMember(obj.id));
-  } else {
-    meInfo = '';
+  switch (context.platform) {
+    case 'telegram':
+      const obj = await client_telegram.getMe();
+      meInfo = JSON.stringify(await context.getChatMember(obj.id));
   }
 
   return router([

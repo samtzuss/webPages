@@ -98,3 +98,6 @@ sudo docker exec -i -w /app/messagers/bot -e "PORT=8443" -e "CERTPATH=/app/messa
 ##
 sudo docker exec -i -w /app/messagers/bot node npx bottender telegram webhook set -w https://fintechlife.net:8443/webhooks/telegram
 sudo docker exec -i -w /app/messagers/bot node npx bottender line webhook set -w https://fintechlife.net:8443/webhooks/line
+
+## webhook
+https://fintechlife.net:8443/webhooks/slack
