@@ -50,15 +50,15 @@ services:
         max-size: '10k'
         max-file: '2'
   node:
-    image: docker.io/bitnami/node # version: 18.3.0
+    image: node
     container_name: node
     hostname: node
     tty: true # Enables debugging capabilities when attached to this container.
     # command: sh -c 'npm install && npm start'
     ports:
-      - '64108:64108'
+      - '64108:3000'
     volumes:
-      - '${rootPath}/node:/app'
+      - '${rootPath}/runners:/app'
       - '${nginxConfig}/ssl/fullchain.pem:/app/ssl/fullchain.pem'
       - '${nginxConfig}/ssl/privkey.pem:/app/ssl/cert/privkey.pem'
     working_dir: /app
@@ -103,6 +103,7 @@ services:
       - ${nginxConfig}/ssl/private.key:/etc/nginx/private.key
       - ${nginxConfig}/ssl/fullchain.pem:/etc/nginx/fullchain.pem
       - ${nginxConfig}/ssl/privkey.pem:/etc/nginx/privkey.pem
+    environment:
       - TZ=Asia/Taipei
     extra_hosts:
       - 'whitefang:192.168.221.199'
