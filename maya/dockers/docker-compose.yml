@@ -7,48 +7,48 @@
 
 version: '3.9'
 services:
-  adminer:
-    image: dehy/adminer # version: 4.8.1
-    container_name: adminer
-    hostname: adminer
-    restart: always
-    ports:
-      - '64101:80'
-    environment:
-      - 'TZ=Asia/Taipei'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.11
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  db:
-    image: mariadb # version: 10.9.1-rc-jammy
-    container_name: db
-    hostname: db
-    restart: always
-    ports:
-      - '64102:3306'
-    volumes:
-      - ${rootPath}/mysql/db:/var/lib/mysql
-      - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d
-    environment:
-      - MARIADB_ROOT_PASSWORD=0926721122
-      - MARIADB_USER=tzuss
-      - MARIADB_PASSWORD=0926721122
-      - TZ=Asia/Taipei
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.12
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
+  # adminer:
+  #   image: dehy/adminer # version: 4.8.1
+  #   container_name: adminer
+  #   hostname: adminer
+  #   restart: always
+  #   ports:
+  #     - '64101:80'
+  #   environment:
+  #     - 'TZ=Asia/Taipei'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.11
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # db:
+  #   image: mariadb # version: 10.9.1-rc-jammy
+  #   container_name: db
+  #   hostname: db
+  #   restart: always
+  #   ports:
+  #     - '64102:3306'
+  #   volumes:
+  #     - ${rootPath}/mysql/db:/var/lib/mysql
+  #     - ${rootPath}/mysql/conf.d:/etc/mysql/conf.d
+  #   environment:
+  #     - MARIADB_ROOT_PASSWORD=0926721122
+  #     - MARIADB_USER=tzuss
+  #     - MARIADB_PASSWORD=0926721122
+  #     - TZ=Asia/Taipei
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.12
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
   node:
     image: node
     container_name: node
@@ -56,7 +56,7 @@ services:
     tty: true # Enables debugging capabilities when attached to this container.
     # command: sh -c 'npm install && npm start'
     ports:
-      - '64108:3000'
+      - '64109:3000'
     volumes:
       - '${rootPath}/runners:/app'
       - '${nginxConfig}/ssl/fullchain.pem:/app/ssl/fullchain.pem'
@@ -81,22 +81,22 @@ services:
     hostname: nginx
     restart: always
     tty: true
-    depends_on:
-      - 'samwp'
-      - 'maya1'
-      - 'maya2'
-      - 'maya3'
-      - 'maya4'
-      - 'maya5'
+    # depends_on:
+    #   - 'samwp'
+    #   - 'maya1'
+    #   - 'maya2'
+    #   - 'maya3'
+    #   - 'maya4'
+    #   - 'maya5'
     ports:
-      - '80:80'
-      - '443:443'
       - '64001:64001'
       - '64104:80'
       - '64105:443'
       - '64107:64107'
+      - '64108:64108'
     volumes:
-      - ${rootPath}/webs:/etc/nginx/html
+      - ${rootPath}/webs/pages:/etc/nginx/html
+      - ${rootPath}/webs/acme-challenge:/etc/nginx/acme-challenge
       - ${nginxConfig}/nginx.conf:/etc/nginx/nginx.conf
       - ${nginxConfig}/conf.d:/etc/nginx/conf.d
       - ${nginxConfig}/ssl/certificate.crt:/etc/nginx/certificate.crt
@@ -117,168 +117,168 @@ services:
       options:
         max-size: '10k'
         max-file: '2'
-  samwp:
-    image: wordpress
-    container_name: samwp
-    hostname: samwp
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64110:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=root
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=samwp
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/samwp:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.16
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  maya1:
-    image: wordpress
-    container_name: maya1
-    hostname: maya1
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64111:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=root
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya1
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/${maya}1:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.17
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  maya2:
-    image: wordpress
-    container_name: maya2
-    hostname: maya2
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64112:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=tzuss
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya2
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/${maya}2:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.18
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  maya3:
-    image: wordpress
-    container_name: maya3
-    hostname: maya3
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64113:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=tzuss
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya3
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/${maya}3:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.19
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  maya4:
-    image: wordpress
-    container_name: maya4
-    hostname: maya4
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64114:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=tzuss
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya4
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/${maya}4:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.20
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
-  maya5:
-    image: wordpress
-    container_name: maya5
-    hostname: maya5
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - '64115:80'
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=tzuss
-      - WORDPRESS_DB_PASSWORD=0926721122
-      - WORDPRESS_DB_NAME=maya5
-      - TZ=Asia/Taipei
-    volumes:
-      - ${projects}/${maya}5:/var/www/html
-    extra_hosts:
-      - 'hostFather:${gateWay3}.1'
-    networks:
-      appsNet:
-        ipv4_address: ${gateWay3}.21
-    logging:
-      driver: 'local'
-      options:
-        max-size: '10k'
-        max-file: '2'
+  # samwp:
+  #   image: wordpress
+  #   container_name: samwp
+  #   hostname: samwp
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64110:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=root
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=samwp
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/samwp:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.16
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # maya1:
+  #   image: wordpress
+  #   container_name: maya1
+  #   hostname: maya1
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64111:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=root
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=maya1
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/${maya}1:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.17
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # maya2:
+  #   image: wordpress
+  #   container_name: maya2
+  #   hostname: maya2
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64112:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=tzuss
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=maya2
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/${maya}2:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.18
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # maya3:
+  #   image: wordpress
+  #   container_name: maya3
+  #   hostname: maya3
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64113:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=tzuss
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=maya3
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/${maya}3:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.19
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # maya4:
+  #   image: wordpress
+  #   container_name: maya4
+  #   hostname: maya4
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64114:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=tzuss
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=maya4
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/${maya}4:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.20
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
+  # maya5:
+  #   image: wordpress
+  #   container_name: maya5
+  #   hostname: maya5
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - '64115:80'
+  #   environment:
+  #     - WORDPRESS_DB_HOST=db
+  #     - WORDPRESS_DB_USER=tzuss
+  #     - WORDPRESS_DB_PASSWORD=0926721122
+  #     - WORDPRESS_DB_NAME=maya5
+  #     - TZ=Asia/Taipei
+  #   volumes:
+  #     - ${projects}/${maya}5:/var/www/html
+  #   extra_hosts:
+  #     - 'hostFather:${gateWay3}.1'
+  #   networks:
+  #     appsNet:
+  #       ipv4_address: ${gateWay3}.21
+  #   logging:
+  #     driver: 'local'
+  #     options:
+  #       max-size: '10k'
+  #       max-file: '2'
 networks:
   appsNet:
     name: appsNet
