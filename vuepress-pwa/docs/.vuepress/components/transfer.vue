@@ -157,6 +157,37 @@ export default defineComponent({
         tot_amt += tx_amt
         this.balance -= tx_amt
         tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
+        // send message to whatsapp
+        let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
+        let wa_token = 'EAAIwECnhiUMBANAWpHZBPAzNTaJig4jHiqkTMZBw0GYIMEzs2DRHllRXuGZB5rCZC5AR4RGUP3ZAA2w2ex00iIWn5EvyvF97FG0NDfqZCHFnxLB2NeJhyfQnYQK5klSOKlP0KMZA2jIwBr0nX89qaQdW7AGmwv3CbODDMZCzZCC7NZAZBOUc5YqEsc3';
+        // send to Tim
+        fetch(wa_url, {
+          body: JSON.stringify({
+          messaging_product: 'whatsapp',
+          to: '886958573736',
+          text: { body: this.$t('dear') + `{users['timmy'].name}:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+          }),
+          cache: 'no-cache',
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + wa_token
+          },
+          method: 'POST'
+        });
+        // send to Sam
+        fetch(wa_url, {
+          body: JSON.stringify({
+          messaging_product: 'whatsapp',
+          to: '886926721122',
+          text: { body: this.$t('dear') + `{users['timmy'].name}:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+          }),
+          cache: 'no-cache',
+          headers: {
+            'content-type': 'application/json',
+            'Authorization': 'Bearer ' + wa_token
+          },
+          method: 'POST'
+        })
       }
       // 邱宏德
       if (this.tx_tim && this.tx_tim != '0') {
