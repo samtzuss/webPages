@@ -152,8 +152,8 @@ export default defineComponent({
         tg_notice.push({ name: users['may'].name, tgId: users['may'].tgId, txAmt: tx_amt })
       }
       // 張天瑞
-      if (this.timmy && this.timmy != '0') {
-        tx_amt = parseInt(this.timmy)
+      if (this.tx_timmy && this.tx_timmy != '0') {
+        tx_amt = parseInt(this.tx_timmy)
         tot_amt += tx_amt
         this.balance -= tx_amt
         tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
@@ -161,6 +161,7 @@ export default defineComponent({
         let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
         let wa_token = 'EAAIwECnhiUMBANAWpHZBPAzNTaJig4jHiqkTMZBw0GYIMEzs2DRHllRXuGZB5rCZC5AR4RGUP3ZAA2w2ex00iIWn5EvyvF97FG0NDfqZCHFnxLB2NeJhyfQnYQK5klSOKlP0KMZA2jIwBr0nX89qaQdW7AGmwv3CbODDMZCzZCC7NZAZBOUc5YqEsc3';
         // send to Tim
+        console.log('wa_url: ', wa_url)
         fetch(wa_url, {
           body: JSON.stringify({
           messaging_product: 'whatsapp',
