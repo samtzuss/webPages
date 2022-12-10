@@ -41,6 +41,8 @@
   "name_me": "ME",
   "Confirm_tx": "Confirm",
   "enter_amount": "Enter amount",
+  "enter_phone": "Enter phone no",
+  "fill_phone": "Mobile transfer",
   "available_amt": "Available amount",
   "tx_in": "Transfer In",
   "amt": "Amount"

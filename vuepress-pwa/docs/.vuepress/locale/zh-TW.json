@@ -41,6 +41,8 @@
   "name_me": "本人",
   "Confirm_tx": "確定轉帳",
   "enter_amount": "請輸入金額",
+  "enter_phone": "請輸入手機號碼",
+  "fill_phone": "手機轉帳",
   "available_amt": "可轉餘額",
   "tx_in": "轉入",
   "amt": "金額"

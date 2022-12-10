@@ -38,7 +38,8 @@
       </tr>
       <tr>
         <td>
-          {{ $t('name_maya') }}: 35741597****5317<br /><br />
+          {{ $t('fill_phone') }}<br /><br />
+          <input type="text" :placeholder="$t('enter_phone')" v-model="tx_phone" /><br />
           <input type="text" :placeholder="$t('enter_amount')" v-model="tx_maya" />
         </td>
       </tr>
@@ -102,6 +103,7 @@ export default defineComponent({
       tx_sam: '',
       tx_fu: '',
       tx_maya: '',
+      tx_phone: '',
       sortKey: '',
       sortOrders: sortOrders
     }
@@ -144,6 +146,10 @@ export default defineComponent({
         fu: { name: this.$t('name_fu'), tgId: '5017176344' },
         maya: { name: this.$t('name_maya'), tgId: '5082311706' }
       }
+      const phone_chatid = {
+        '886958573736': { name: this.$t('name_tim'), tg_id: '1350630761' }, // Tim
+        '886926721122': { name: this.$t('name_sam'), tg_id: '1330056967' } // Sam
+      }
       // 梅平強
       if (this.tx_may && this.tx_may != '0') {
         tx_amt = parseInt(this.tx_may)
@@ -159,14 +165,14 @@ export default defineComponent({
         tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
         // send message to whatsapp
         let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
-        let wa_token = 'EAAIwECnhiUMBANAWpHZBPAzNTaJig4jHiqkTMZBw0GYIMEzs2DRHllRXuGZB5rCZC5AR4RGUP3ZAA2w2ex00iIWn5EvyvF97FG0NDfqZCHFnxLB2NeJhyfQnYQK5klSOKlP0KMZA2jIwBr0nX89qaQdW7AGmwv3CbODDMZCzZCC7NZAZBOUc5YqEsc3';
+        let wa_token = 'EAAIwECnhiUMBANX6JpyFU7ayjbMPSGXCTMnig7dXkEsTHRHEXgBWQppMuXEobOjdiilveUO0XKcAZCCLQKdkBBG37rgZAfPZBLYUSqKP1eGKj5vfZAIOyTof0vdBlFKR9MAHPRpqZBFuPuDJxh42AQ2ZCSReNVttZA6ZCfkWPHZBSZA8CA2WwgZCBsgj2O7JC2UufdaWEIWJ1W5rQZDZD';
         // send to Tim
         console.log('wa_url: ', wa_url)
         fetch(wa_url, {
           body: JSON.stringify({
           messaging_product: 'whatsapp',
           to: '886958573736',
-          text: { body: this.$t('dear') + `{users['timmy'].name}:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+          text: { body: this.$t('dear') + users['timmy'].name + `:\n`  + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
           }),
           cache: 'no-cache',
           headers: {
@@ -180,7 +186,7 @@ export default defineComponent({
           body: JSON.stringify({
           messaging_product: 'whatsapp',
           to: '886926721122',
-          text: { body: this.$t('dear') + `{users['timmy'].name}:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+          text: { body: this.$t('dear') + users['timmy'].name + `:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
           }),
           cache: 'no-cache',
           headers: {
@@ -211,12 +217,12 @@ export default defineComponent({
         this.balance -= tx_amt
         tg_notice.push({ name: users['fu'].name, tgId: users['fu'].tgId, txAmt: tx_amt })
       }
-      // Maya
-      if (this.tx_maya && this.tx_maya != '0') {
+      // 自填手機號碼
+      if (this.tx_maya && this.tx_maya != '0' && this.tx_phone && this.tx_phone) {
         tx_amt = parseInt(this.tx_maya)
         tot_amt += tx_amt
         this.balance -= tx_amt
-        tg_notice.push({ name: users['maya'].name, tgId: users['maya'].tgId, txAmt: tx_amt })
+        tg_notice.push({ name: phone_chatid[this.tx_phone].name, tgId: phone_chatid[this.tx_phone].tg_id, txAmt: tx_amt })
       }
       if (this.balance < 0) {
         this.balance = balance_keep
