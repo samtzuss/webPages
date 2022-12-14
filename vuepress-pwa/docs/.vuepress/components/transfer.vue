@@ -165,7 +165,7 @@ export default defineComponent({
         tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
         // send message to whatsapp
         let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
-        let wa_token = 'EAAIwECnhiUMBABHQOte1eKaS8zhApsZCAtAIuoCROEZALP2K2DR3kw3BOz0MsVQJIuQZCsXKWk8XC8nlDNFkHH3ujxBW7uSNSfxS66yOH8WDN5OR2SoYwheNauR5YHJZAYCCzXWrfjucvth9reE9eFPBfpAnY6Cpd2ZBMqxAbHCOxjVKc5ZAl5tYs6sEdR7EP0utiUmZAdx8QZDZD';
+        let wa_token = 'EAAIwECnhiUMBAAJM2GWdwpXkhsOApVesZB3ViQKe0qgbZAc9ZCwx8MiQOvidYPBHFUeQFgyZCwey1rdo1B7rKzMu2ZB5CSZA5W2dfUmej1AUFJy3Ro4sSRVZAJhc1nQHDZATMb6wEZBI4xpW12Ceui84jCVMKZBzZCerV4RWeeBMsWUPVOAvkjOE2qQ';
         // send to Tim
         console.log('wa_url: ', wa_url)
         fetch(wa_url, {

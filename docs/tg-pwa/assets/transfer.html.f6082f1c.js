@@ -1,0 +1,1 @@
+import{_ as a,r as t,o as n,c as s,a as o,b as e,d as c}from"./app.95ed437d.js";const _={},f=e("h1",{id:"transfer",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#transfer","aria-hidden":"true"},"#"),c(" Transfer")],-1);function d(l,i){const r=t("transfer");return n(),s("div",null,[f,o(r)])}var m=a(_,[["render",d],["__file","transfer.html.vue"]]);export{m as default};
