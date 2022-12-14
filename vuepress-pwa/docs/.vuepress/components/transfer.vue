@@ -12,12 +12,12 @@
           <input type="text" :placeholder="$t('enter_amount')" v-model="tx_may" />
         </td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>
           {{ $t('name_timmy') }}: 54126528****3178<br /><br />
           <input type="text" :placeholder="$t('enter_amount')" v-model="tx_timmy" />
         </td>
-      </tr>
+      </tr> -->
       <tr>
         <td>
           {{ $t('name_tim') }}: 85274196****9514<br /><br />
@@ -158,44 +158,44 @@ export default defineComponent({
         tg_notice.push({ name: users['may'].name, tgId: users['may'].tgId, txAmt: tx_amt })
       }
       // 張天瑞
-      if (this.tx_timmy && this.tx_timmy != '0') {
-        tx_amt = parseInt(this.tx_timmy)
-        tot_amt += tx_amt
-        this.balance -= tx_amt
-        tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
-        // send message to whatsapp
-        let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
-        let wa_token = 'EAAIwECnhiUMBAAJM2GWdwpXkhsOApVesZB3ViQKe0qgbZAc9ZCwx8MiQOvidYPBHFUeQFgyZCwey1rdo1B7rKzMu2ZB5CSZA5W2dfUmej1AUFJy3Ro4sSRVZAJhc1nQHDZATMb6wEZBI4xpW12Ceui84jCVMKZBzZCerV4RWeeBMsWUPVOAvkjOE2qQ';
-        // send to Tim
-        console.log('wa_url: ', wa_url)
-        fetch(wa_url, {
-          body: JSON.stringify({
-          messaging_product: 'whatsapp',
-          to: '886958573736',
-          text: { body: this.$t('dear') + users['timmy'].name + `:\n`  + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
-          }),
-          cache: 'no-cache',
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + wa_token
-          },
-          method: 'POST'
-        });
-        // send to Sam
-        fetch(wa_url, {
-          body: JSON.stringify({
-          messaging_product: 'whatsapp',
-          to: '886926721122',
-          text: { body: this.$t('dear') + users['timmy'].name + `:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
-          }),
-          cache: 'no-cache',
-          headers: {
-            'content-type': 'application/json',
-            'Authorization': 'Bearer ' + wa_token
-          },
-          method: 'POST'
-        })
-      }
+      // if (this.tx_timmy && this.tx_timmy != '0') {
+      //   tx_amt = parseInt(this.tx_timmy)
+      //   tot_amt += tx_amt
+      //   this.balance -= tx_amt
+      //   tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
+      //   // send message to whatsapp
+      //   let wa_url = 'https://graph.facebook.com/v15.0/101849849432836/messages';
+      //   let wa_token = 'EAAIwECnhiUMBAAJM2GWdwpXkhsOApVesZB3ViQKe0qgbZAc9ZCwx8MiQOvidYPBHFUeQFgyZCwey1rdo1B7rKzMu2ZB5CSZA5W2dfUmej1AUFJy3Ro4sSRVZAJhc1nQHDZATMb6wEZBI4xpW12Ceui84jCVMKZBzZCerV4RWeeBMsWUPVOAvkjOE2qQ';
+      //   // send to Tim
+      //   console.log('wa_url: ', wa_url)
+      //   fetch(wa_url, {
+      //     body: JSON.stringify({
+      //     messaging_product: 'whatsapp',
+      //     to: '886958573736',
+      //     text: { body: this.$t('dear') + users['timmy'].name + `:\n`  + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+      //     }),
+      //     cache: 'no-cache',
+      //     headers: {
+      //       'content-type': 'application/json',
+      //       'Authorization': 'Bearer ' + wa_token
+      //     },
+      //     method: 'POST'
+      //   });
+      //   // send to Sam
+      //   fetch(wa_url, {
+      //     body: JSON.stringify({
+      //     messaging_product: 'whatsapp',
+      //     to: '886926721122',
+      //     text: { body: this.$t('dear') + users['timmy'].name + `:\n` + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit') }
+      //     }),
+      //     cache: 'no-cache',
+      //     headers: {
+      //       'content-type': 'application/json',
+      //       'Authorization': 'Bearer ' + wa_token
+      //     },
+      //     method: 'POST'
+      //   })
+      // }
       // 邱宏德
       if (this.tx_tim && this.tx_tim != '0') {
         tx_amt = parseInt(this.tx_tim)
