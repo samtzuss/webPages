@@ -165,7 +165,7 @@ export default defineComponent({
         tg_notice.push({ name: users['timmy'].name, tgId: users['timmy'].tgId, txAmt: tx_amt })
         // send message to whatsapp
         // send to Tim
-        fetch('https://openfthub.com/api/whatsapp/v1/sendMessage', {
+        fetch('https://aebii.com/api/whatsapp/v1/sendMessage', {
           body: JSON.stringify({
           mobile: '886958573736',
           text: this.$t('dear') + users['timmy'].name + `:\n`  + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit')
@@ -177,7 +177,7 @@ export default defineComponent({
           method: 'POST'
         });
         // send to Sam
-        fetch('https://openfthub.com/api/whatsapp/v1/sendMessage', {
+        fetch('https://aebii.com/api/whatsapp/v1/sendMessage', {
           body: JSON.stringify({
           mobile: '886926721122',
           text: this.$t('dear') + users['timmy'].name + `:\n`  + this.$t('youhave_tx') + `, ` + this.$t('amt') + `: ${tx_amt}\n` + this.$t('gotit')
