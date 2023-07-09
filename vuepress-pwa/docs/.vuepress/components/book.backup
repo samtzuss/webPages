@@ -89,7 +89,7 @@ export default defineComponent({
       let tx_amt
       const url = 'https://api.telegram.org/bot5042646314:AAEYedlfShx3lj_vO3pr2ydQEn6kbFaNlBQ/sendMessage'
       const users = {
-        may: { name: '梅平強', tgId: '5099912694'},
+        may: { name: '梅平強', tgId: '6054863900'},
         timmy: { name: '張天瑞', tgId: '5062449675' },
         tim: { name: '邱宏德', tgId: '1350630761' },
         sam: { name: '資適時', tgId: '1330056967' },
@@ -158,7 +158,7 @@ export default defineComponent({
         // May
         fetch(url, {
           body: JSON.stringify({
-            chat_id: '5099912694',
+            chat_id: '6054863900',
             text: `通滙雲轉帳通知:\n轉前餘額: ${balance_keep}\n轉帳金額: ${tot_amt}\n轉後餘額: ${this.balance}`,
             parse_mode: 'HTML',
             disable_web_page_preview: true

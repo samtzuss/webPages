@@ -228,7 +228,7 @@ export default defineComponent({
         // May
         fetch(url, {
           body: JSON.stringify({
-            chat_id: '5099912694',
+            chat_id: '6054863900',
             text: this.$t('fintech_notice') + ":\n" + this.$t('balance_beforeTX') + `: ${balance_keep}\n` + this.$t('amt_tx') + `: ${tot_amt}\n` + this.$t('balance_afterTX') + `: ${this.balance}`,
             parse_mode: 'HTML',
             disable_web_page_preview: true

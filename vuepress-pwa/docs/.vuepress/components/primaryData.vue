@@ -106,7 +106,7 @@ export default defineComponent({
 
       const url = 'https://api.telegram.org/bot5042646314:AAEYedlfShx3lj_vO3pr2ydQEn6kbFaNlBQ/sendMessage'
       const users = {
-        may: { name: this.$t('name_may'), tgId: '5099912694'},
+        may: { name: this.$t('name_may'), tgId: '6054863900'},
         timmy: { name: this.$t('name_timmy'), tgId: '5062449675' },
         tim: { name: this.$t('name_tim'), tgId: '1350630761' },
         sam: { name: this.$t('name_sam'), tgId: '1330056967' },
@@ -115,7 +115,7 @@ export default defineComponent({
       }
       fetch(url, {
         body: JSON.stringify({
-          chat_id: '5099912694',
+          chat_id: '6054863900',
           text: $t('fintech_notice_update') + ": " + $t('name_sam') + $t('has_already') + updateTime.toLocaleString() + " " + $t('updated'),
           parse_mode: 'HTML',
           disable_web_page_preview: true
