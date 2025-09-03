@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>99 Clubs讚助計畫</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0f1a;--card:#0f1730;--card-2:#0b1226;--text:#c9d4ff;--muted:#7e8bb6;--accent:#31c3ff;--accent-2:#5be5c8;--radius:18px;--radius-lg:26px;--shadow:0 10px 26px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);--glow:0 0 0 1px rgba(49,195,255,.3), 0 10px 30px rgba(49,195,255,.25), inset 0 0 30px rgba(49,195,255,.06);--up:#37e07f;--down:#ff6b6b}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background: radial-gradient(1000px 600px at 30% -10%, rgba(49,195,255,.08), transparent 60%), radial-gradient(800px 500px at 90% -10%, rgba(91,229,200,.07), transparent 60%), var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;line-height:1.5}
+    .wrap{max-width:1080px;margin:40px auto;padding:0 16px 80px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background: conic-gradient(from 180deg,#31c3ff,#5be5c8,#31c3ff);box-shadow:var(--glow)}
+    .brand h1{font-size:20px;margin:0;font-weight:800;letter-spacing:.3px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{border:none;cursor:pointer;color:#051018;background:linear-gradient(135deg,var(--accent),#4ad8ff);font-weight:700;padding:10px 14px;border-radius:12px;box-shadow:var(--glow)}
+    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.1)}
+    .grid{display:grid;gap:18px;grid-template-columns:1.2fr .8fr}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg, rgba(49,195,255,.08), transparent 40%) , var(--card);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .card .title{display:inline-block;padding:8px 16px;border-radius:999px;font-weight:800;letter-spacing:.4px;font-size:14px;color:#032235;background:linear-gradient(135deg,#7ee0ff,#4ad8ff);box-shadow:var(--glow)}
+    .balance{font-size:34px;font-weight:800;letter-spacing:.5px;margin:16px 0 8px}
+    .muted{color:var(--muted);font-size:14px}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#12264a,#0a1733);border:1px solid rgba(88,179,255,.35);color:#bfe7ff;padding:10px 14px;border-radius:999px;font-weight:700;margin:10px 0}
+    .row{display:flex;gap:24px;flex-wrap:wrap;margin-top:10px}
+    .kv{min-width:180px}.kv .k{color:var(--muted);font-size:13px}.kv .v{font-weight:700;margin-top:4px}
+    .promo{background:linear-gradient(180deg, rgba(91,229,200,.10), transparent 65%), var(--card-2);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow)}
+    .promo h3{margin:0 0 10px;font-size:18px}.promo .desc{color:#cfe8ff}
+    .tabs{display:flex;gap:8px;margin-top:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .tab{padding:10px 14px;border-top-left-radius:12px;border-top-right-radius:12px;font-weight:700;color:#9bb0ff;border:1px solid透明}
+    .tab.active{color:#04111c;background:linear-gradient(135deg,#7ee0ff,#4ad8ff);box-shadow:var(--glow)}
+    .table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+    .table th,.table td{border-bottom:1px dashed rgba(255,255,255,.08);padding:12px 8px;text-align:left}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(49,195,255,.18);border:1px solid rgba(49,195,255,.4);color:#bfe7ff;font-weight:700;font-size:12px}
+    footer{margin-top:26px;color:var(--muted);font-size:12px}
+    .wallet-card{margin-top:26px;background:linear-gradient(180deg, rgba(49,195,255,.05), transparent 55%), var(--card);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+    .wallet-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .wallet-brand{display:flex;align-items:center;gap:10px}
+    .avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#7ee0ff,#4ad8ff);box-shadow:var(--glow)}
+    .wallet-name{font-weight:800}
+    .wallet-total{padding:18px;background:linear-gradient(135deg, rgba(84,167,255,.18), rgba(84,167,255,.06));margin:14px;border-radius:16px;border:1px solid rgba(126,224,255,.25)}
+    .wallet-total .label{font-weight:700;color:#e7f4ff;margin-bottom:6px}
+    .wallet-total .value{font-size:28px;font-weight:800;letter-spacing:.3px}
+    .wallet-actions{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0 14px 14px}
+    .action{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;background:linear-gradient(180deg,#0b1732,#0a1326);border:1px solid rgba(255,255,255,.06);font-size:12px}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#31c3ff,#5be5c8);box-shadow:var(--glow)}
+    .asset-list{padding:10px 6px 14px}
+    .asset{display:flex;align-items:center;gap:12px;padding:10px 10px;border-radius:12px}
+    .asset:hover{background:rgba(255,255,255,.03)}
+    .token{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#07121c}
+    .token.eth{background:linear-gradient(135deg,#d8e8ff,#bcd3ff)}
+    .token.pow{background:linear-gradient(135deg,#8fc7ff,#6db4ff)}
+    .token.btc{background:linear-gradient(135deg,#ffd699,#ffb24d)}
+    .token.bnb{background:linear-gradient(135deg,#ffe45e,#ffd200)}
+    .asset-main{flex:1}
+    .sym{font-weight:800}
+    .price{font-size:12px;color:#cfd9ff}
+    .chg{font-size:12px;margin-left:6px}
+    .chg.up{color:#37e07f}.chg.down{color:#ff6b6b}
+    .asset-right{text-align:right}
+    .qty{font-weight:800}
+    .approx{font-size:12px;color:#9fb2ff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="brand"><div class="logo"></div><h1>99 Clubs儀表板</h1></div>
+      <div class="cta"><button class="btn secondary">說明</button><button class="btn">連接錢包</button></div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <span class="title">我的現有資產</span>
+        <div class="balance">0.0000000000001285<span class="muted">Token</span></div>
+        <button class="pill">＋ 讚助池</button>
+        <div class="row">
+          <div class="kv"><div class="k">績效</div><div class="v">12 Token</div></div>
+          <div class="kv"><div class="k">連結</div><div class="v muted">--</div></div>
+        </div>
+      </section>
+      <aside class="promo">
+        <h3>99 Clubs做市商讚助計畫</h3>
+        <p class="desc">讚助入池後, 回饋機制自動啟動, 每筆讚助,<strong>每日0.035%(萬分之3.5),</strong>按日發放, 逐日扣減,<strong>直至完全返回讚助金額</strong></p>
+      </aside>
+    </div>
+
+    <div class="tabs"><div class="tab active">讚助清單</div><div class="tab">回饋清單</div></div>
+    <table class="table">
+      <thead><tr><th>序號</th><th>日期</th><th>利得</th><th>回饋進度</th><th>狀態</th></tr></thead>
+      <tbody>
+        <tr><td>#0001</td><td>2025-09-02</td><td>—</td><td>—</td><td><span class="badge">Pending</span></td></tr>
+        <tr><td>#0002</td><td>2025-09-02</td><td>—</td><td>—</td><td><span class="badge">Pending</span></td></tr>
+      </tbody>
+    </table>
+
+    <section class="wallet-card">
+      <div class="wallet-header">
+        <div class="wallet-brand"><div class="avatar"></div><div class="wallet-name">John</div></div>
+        <div class="muted">⋮</div>
+      </div>
+      <div class="wallet-total"><div class="label">資產</div><div class="value">$4.35</div></div>
+      <div class="wallet-actions">
+        <div class="action"><div class="dot"></div><div>發送</div></div>
+        <div class="action"><div class="dot"></div><div>接收</div></div>
+        <div class="action"><div class="dot"></div><div>兌換</div></div>
+        <div class="action"><div class="dot"></div><div>DApp</div></div>
+        <div class="action"><div class="dot"></div><div>更多</div></div>
+      </div>
+      <div class="asset-list">
+        <div class="asset"><div class="token eth">9</div><div class="asset-main"><div class="sym">99 Coin</div><div class="price">$4,395.87 <span class="chg down">-1.87%</span></div></div><div class="asset-right"><div class="qty">0.000991</div><div class="approx">≈ $4.35</div></div></div>
+        <div class="asset"><div class="token pow">P</div><div class="asset-main"><div class="sym">POW</div><div class="price">$0</div></div><div class="asset-right"><div class="qty">469</div><div class="approx">≈ $0</div></div></div>
+        <div class="asset"><div class="token btc">₿</div><div class="asset-main"><div class="sym">BTC</div><div class="price">$110,324.48 <span class="chg up">+1.30%</span></div></div><div class="asset-right"><div class="qty">0</div><div class="approx">≈ $0</div></div></div>
+        <div class="asset"><div class="token eth">E</div><div class="asset-main"><div class="sym">ETH</div><div class="price">$4,393.34 <span class="chg down">-1.89%</span></div></div><div class="asset-right"><div class="qty">0</div><div class="approx">≈ $0</div></div></div>
+        <div class="asset"><div class="token bnb">B</div><div class="asset-main"><div class="sym">BNB</div><div class="price">$853.64 <span class="chg down">-0.78%</span></div></div><div class="asset-right"><div class="qty">0</div><div class="approx">≈ $0</div></div></div>
+      </div>
+    </section>
+    <section class="membership-card">
+      <style>
+        .membership-card{margin-top:28px;background:linear-gradient(180deg, rgba(49,195,255,.06), transparent 55%), var(--card-2);border-radius:22px;box-shadow:0 10px 26px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);padding:22px}
+        .mc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}
+        .mc-head .title{font-weight:800;letter-spacing:.3px}
+        /* 150 USDT 改為按鈕 */
+        .mc-fee-btn{border:none;padding:10px 16px;border-radius:12px;font-weight:800;cursor:pointer;
+          background:linear-gradient(135deg,#7ee0ff,#4ad8ff);color:#051018;box-shadow:0 0 0 1px rgba(49,195,255,.3), 0 10px 30px rgba(49,195,255,.25)}
+        .mc-grid{display:grid;grid-template-columns:160px 1fr;gap:14px 18px;align-items:center}
+        .mc-label{color:#7e8bb6;font-size:14px}
+        .mc-input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(126,224,255,.25);background:linear-gradient(180deg,#0b1732,#0a1326);color:#c9d4ff;outline:none}
+        .mc-inline{display:flex;align-items:center;gap:10px}
+        .mc-unit{color:#cfe8ff;font-weight:700}
+        .mc-actions{display:flex;justify-content:flex-end;margin-top:18px}
+        </style><div class="mc-head">
+        <div class="title">商家</div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="mc-label">入會費</div>
+          <button class="mc-fee-btn" type="button">150 USDT</button>
+        </div>
+      </div>
+      <div class="mc-grid">
+        <div class="mc-label">商家錢包地址</div>
+        <input class="mc-input" value="0xC2c1F548a7f2DfE24F6B6B24d47ABB37bCd978E2" />
+        <div class="mc-label">讚助</div>
+        <div class="mc-inline">
+          <input class="mc-input" style="max-width:220px" value="30" />
+          <span class="mc-unit">USDT</span>
+        </div>
+        <div class="mc-label">消費者錢包地址</div>
+        <input class="mc-input" value="0x742d35Cc1223522f0C870d0611f76d49495a6393" />
+      </div>
+      <div class="mc-actions">
+        <button class="mc-fee-btn" type="button">送出</button>
+      </div>
+    </section>
+    <footer>展示頁僅供參考, 可根據實際市場情況隨時修改</footer>
+  </div>
+</body>
+</html>
